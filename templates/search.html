@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Daily Dose of Reading</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- bootstrap -->
+		<link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">      
+		<link href="static/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+		
+		<link href="static/css/bootstrappage.css" rel="stylesheet"/>
+		
+		<!-- global styles -->
+		<link href="static/css/flexslider.css" rel="stylesheet"/>
+		<link href="static/css/main.css" rel="stylesheet"/>
+
+		<!-- scripts -->
+		<script src="static/js/jquery-1.7.2.min.js"></script>
+		<script src="static/bootstrap/js/bootstrap.min.js"></script>				
+		<script src="static/js/superfish.js"></script>	
+		<script src="static/js/jquery.scrolltotop.js"></script>
+		<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+    <body>		
+		<div id="top-bar" class="container">
+			<div class="row">
+				<div class="span4">
+					<a href="/adminindex" class="logo pull-left"><img src="static/images/websitelogo.png" class="site_logo" alt=""></a>
+				</div>
+				<div class="span8">
+					<div class="account pull-right">
+						<ul class="user-menu">				
+							<li><a href="./">Logout</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="wrapper" class="container">
+			<section class="navbar main-menu">
+				<div class="navbar-inner main-menu">	
+					<nav id="menu" class="pull-right">
+						<ul>
+							<li><a href="./adminindex">Home</a></li>
+							<li><a href="./search">Search Books</a></li>
+							<li><a href="./books" method="POST">Books</a>					
+								<ul>
+									<li><a href="./books">Add</a></li>									
+									<li><a href="./books">Update</a></li>
+									<li><a href="./books">Delete</a></li>			
+								</ul>
+							</li>
+							<li><a href="#">Inventory</a></li>	
+							<li><a href="./users">Users</a>					
+								<ul>
+									<li><a href="./users">Admins</a></li>									
+									<li><a href="./users">Customers</a></li>					
+								</ul>
+							</li>
+							<li><a href="#">My Account</a></li>		
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+
+			<section class="main-content">
+				<div class="row">
+					<div class="span12">
+
+						<!-- Search -->
+						<div class="row">
+							<div class="span12">
+								<h4 class="title">
+									<span class="pull-left"><span class="text"><span class="line"><strong></strong> Search</span></span></span>
+								</h4>
+								<div id="myCarousel-2" class="myCarousel carousel slide">
+									<div class="carousel-inner">
+										<form action="{{url_for('search')}}" class="form-stacked" method="POST">
+											<input type="hidden" name="next" value="/">
+											<fieldset>
+
+                                                <div class="control-group">
+                                                    <label class="control-label">Search by</label>
+                                                    <div class="controls">
+                                                        <select id="account" name="search">
+                                                            <option value="title" selected>Title</option>
+                                                            <option value="genre">Genre</option>
+                                                            <option value="author">Author</option>
+                                                          </select>
+                                                    </div>
+                                                </div>
+												<div class="control-group">
+													<label class="control-label">Query</label>
+													<div class="controls">
+														<input type="text" placeholder="Enter search query" id="username" class="input-xlarge" name="query">
+													</div>
+												</div>
+
+												<div class="control-group">
+													<input tabindex="3" class="btn btn-inverse large" type="submit" value="Search">
+												</div>
+											</fieldset>
+										</form>			
+									</div>							
+								</div>
+							</div>						
+						</div>
+
+
+                        <!-- Result -->
+						<div class="row">
+							<div class="span12">
+								<h4 class="title">
+									<span class="pull-left"><span class="text"><span class="line"><strong>Result</strong></span></span></span>
+									<span class="pull-right">
+										<a class="left button" href="#myCarousel-2" data-slide="prev"></a><a class="right button" href="#myCarousel-2" data-slide="next"></a>
+									</span>
+								</h4>
+                                
+            
+								<div id="myCarousel-2" class="myCarousel carousel slide">
+									<div class="carousel-inner">
+										<div class="active item">
+
+                                            <ul class="thumbnails">	
+                                                <!-- Search by title -->
+                                                {% if search == "title" %}
+                                                    {% for book in booksData %}
+                                                        <li class="span2">
+                                                            <div class="product-box">
+                                                                <span class="sale_tag"></span>
+                                                                <p><a href="#"><img src="static/images/books/book.png" alt="" /></a></p>
+                                                                <a href="#" class="title">{{book[3]}} ({{book[0]}})</a><br/>
+                                                                <a href="#" class="title">- {{book[7]}} {{book[8]}}</a><br/>
+                                                                <a href="#" class="category">{{book[4]}}</a>
+                                                                <p class="price">Rs {{book[6]}} /-</p>
+                                                            </div>
+                                                        </li>
+                                                    {% endfor %}
+                                                {% endif %}	
+                                                
+                                                <!-- Search by genre -->
+                                                {% if search == "genre" %}    
+                                                    {% for book in booksData %}
+                                                        <li class="span2">
+                                                            <div class="product-box">
+                                                                <span class="sale_tag"></span>
+                                                                <p><a href="#"><img src="static/images/books/book.png" alt="" /></a></p>
+                                                                <a href="#" class="title">{{book[3]}} ({{book[0]}})</a><br/>
+                                                                <a href="#" class="title">- {{book[7]}} {{book[8]}}</a><br/>
+                                                                <a href="#" class="category">{{book[4]}}</a>
+                                                                <p class="price">Rs {{book[6]}} /-</p>
+                                                            </div>
+                                                        </li>
+                                                    {% endfor %}
+                                                {% endif %}	
+                                                
+                                                <!-- Search by author -->
+                                                {% if search == "author" %}
+                                                    {% for book in booksData %}
+                                                        <li class="span2">
+                                                            <div class="product-box">
+                                                                <span class="sale_tag"></span>
+                                                                <p><a href="#"><img src="static/images/books/book.png" alt="" /></a></p>
+                                                                <a href="#" class="title">{{book[3]}} ({{book[0]}})</a><br/>
+                                                                <a href="#" class="title">- {{book[7]}} {{book[8]}}</a><br/>
+                                                                <a href="#" class="category">{{book[4]}}</a>
+                                                                <p class="price">Rs {{book[6]}} /-</p>
+                                                            </div>
+                                                        </li>
+                                                    {% endfor %}
+                                                {% endif %}
+											</ul>
+										</div>
+									</div>							
+								</div>
+
+							</div>						
+						</div>
+
+					</div>				
+				</div>
+			</section>
+			<!-- <section class="our_client">
+				<h4 class="title"><span class="text">Developers</span></h4>
+				<div class="row">					
+					<div class="span3">
+						<a href="#"><img alt="" src="static/images/clients/14.png"></a>
+					</div>
+					<div class="span3">
+						<a href="#"><img alt="" src="static/images/clients/35.png"></a>
+					</div>
+					<div class="span3">
+						<a href="#"><img alt="" src="static/images/clients/1.png"></a>
+					</div>
+					<div class="span3">
+						<a href="#"><img alt="" src="static/images/clients/2.png"></a>
+					</div>
+				</div>
+			</section> -->
+
+			<!-- <section id="footer-bar">
+				<div class="row">
+					<div class="span3">
+						<h4>Navigation</h4>
+						<ul class="nav">
+							<li><a href="./index.html">Homepage</a></li>  
+							<li><a href="./about.html">About Us</a></li>
+							<li><a href="./contact.html">Contac Us</a></li>
+							<li><a href="./cart.html">Your Cart</a></li>
+							<li><a href="./register.html">Login</a></li>							
+						</ul>					
+					</div>
+					<div class="span4">
+						<h4>My Account</h4>
+						<ul class="nav">
+							<li><a href="#">My Account</a></li>
+							<li><a href="#">Order History</a></li>
+							<li><a href="#">Wish List</a></li>
+							<li><a href="#">Newsletter</a></li>
+						</ul>
+					</div>
+					<div class="span5">
+						<p class="logo"><img src="static/images/logo.png" class="site_logo" alt=""></p>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
+						<br/>
+						<span class="social_icons">
+							<a class="facebook" href="#">Facebook</a>
+							<a class="twitter" href="#">Twitter</a>
+							<a class="skype" href="#">Skype</a>
+							<a class="vimeo" href="#">Vimeo</a>
+						</span>
+					</div>					
+				</div>	
+			</section> -->
+
+			<section id="copyright">
+				<!-- <span>Copyright 2013 bootstrappage template  All right reserved.</span> -->
+			</section>
+		</div>
+		<script src="static/js/common.js"></script>
+		<script src="static/js/jquery.flexslider-min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(document).ready(function() {
+					$('.flexslider').flexslider({
+						animation: "fade",
+						slideshowSpeed: 4000,
+						animationSpeed: 600,
+						controlNav: false,
+						directionNav: true,
+						controlsContainer: ".flex-container" // the container that holds the flexslider
+					});
+				});
+			});
+		</script>
+    </body>
+</html>

@@ -1,7 +1,8 @@
-from flask import Flask, jsonify,request,render_template
+from flask import Flask, jsonify,request,render_template,redirect,url_for
 from flask_mysqldb import MySQL
 import MySQLdb.cursors,re
 
+import datetime
 import os
 from os import getenv
 from dotenv import load_dotenv
@@ -28,8 +29,18 @@ mysql = MySQL(app)
 # home route function for testing purposes
 @app.route("/")
 def home():
-    return render_template("home.html")
-    return "HOME PAGE"
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT b.bookID,a.authorID,b.publisherID,b.title,b.genre,b.publicationYear,b.price,a.firstName,a.lastName  FROM Books as b INNER JOIN Authors as a ON b.authorID = a.authorID  ORDER BY bookID")
+    booksData = cur.fetchall()
+    booksData = list(booksData)
+    cur.execute("SELECT DISTINCT genre from Books")
+    genreData = list(cur.fetchall())
+    # print("HIIIIIIIIIIIIIIIIIIIIIIIIII")
+    # print(genreData)
+    # print(booksData)
+    mysql.connection.commit()
+    cur.close()
+    return render_template("home.html",booksData=booksData,genreData=genreData)
 
 @app.route("/register",methods=["POST","GET"])
 def register():
@@ -89,19 +100,250 @@ def login():
             check = cur.fetchall()
             check = list(check)
             print(check)
+            mysql.connection.commit()
+            cur.close()
 
             if not check:
                 print("Fail")
                 return render_template("login.html")
             else:
                 print("Success")
-                return render_template("adminindex.html")
+                cur = mysql.connection.cursor()
+                cur.execute("SELECT b.bookID,a.authorID,b.publisherID,b.title,b.genre,b.publicationYear,b.price,a.firstName,a.lastName  FROM Books as b INNER JOIN Authors as a ON b.authorID = a.authorID  ORDER BY bookID")
+                # cur.execute("SELECT * from Books")
+                booksData = cur.fetchall()
+                booksData = list(booksData)
+                cur.execute("SELECT DISTINCT genre from Books")
+                genreData = list(cur.fetchall())
+                # print(genreData)
+                # print(booksData)
+                mysql.connection.commit()
+                cur.close()
+                return render_template("adminindex.html",booksData=booksData,genreData=genreData)
 
-            mysql.connection.commit()
-            cur.close()
             return render_template("login.html")
 
     return render_template("login.html")
+
+@app.route("/adminindex",methods=["POST","GET"])
+def adminindex():
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT b.bookID,a.authorID,b.publisherID,b.title,b.genre,b.publicationYear,b.price,a.firstName,a.lastName  FROM Books as b INNER JOIN Authors as a ON b.authorID = a.authorID  ORDER BY bookID")
+        # cur.execute("SELECT * from Books")
+        booksData = cur.fetchall()
+        booksData = list(booksData)
+        cur.execute("SELECT DISTINCT genre from Books")
+        genreData = list(cur.fetchall())
+        # print(genreData)
+        # print(booksData)
+        mysql.connection.commit()
+        cur.close()
+        return render_template("adminindex.html",booksData=booksData,genreData=genreData)
+
+@app.route("/search",methods=["POST","GET"])
+def search():
+    if request.method == "POST":
+        search = str(request.form.get("search"))
+        query = str(request.form.get("query"))
+
+
+        if search == "title":
+            cur = mysql.connection.cursor()
+            cur.execute("SELECT b.bookID,a.authorID,b.publisherID,b.title,b.genre,b.publicationYear,b.price,a.firstName,a.lastName FROM Books as b,Authors as a WHERE title LIKE %s AND b.authorID = a.authorID",({'%' + query + '%'}))
+            booksData = list(cur.fetchall())
+            mysql.connection.commit()
+            cur.close()
+            return render_template("search.html",booksData=booksData,search=search)
+        
+        if search == "genre":
+            cur = mysql.connection.cursor()
+            cur.execute("SELECT b.bookID,a.authorID,b.publisherID,b.title,b.genre,b.publicationYear,b.price,a.firstName,a.lastName FROM Books as b, Authors as a WHERE b.genre = %s AND b.authorID = a.authorID",(query,))
+            booksData = list(cur.fetchall())
+            mysql.connection.commit()
+            cur.close()
+            return render_template("search.html",booksData=booksData,search=search)
+        
+        if search == "author":
+            cur = mysql.connection.cursor()
+            cur.execute("SELECT b.bookID,a.authorID,b.publisherID,b.title,b.genre,b.publicationYear,b.price,a.firstName,a.lastName FROM Books as b,Authors as a WHERE a.firstName LIKE %s AND b.authorID = a.authorID",({'%' + query + '%'}))
+            list1Data = list(cur.fetchall())
+            cur.execute("SELECT b.bookID,a.authorID,b.publisherID,b.title,b.genre,b.publicationYear,b.price,a.firstName,a.lastName FROM Books as b,Authors as a WHERE a.lastName LIKE %s AND b.authorID = a.authorID",({'%' + query + '%'}))
+            list2Data = list(cur.fetchall())
+            booksData = list(set(list1Data) | set(list2Data))   # without repition
+            mysql.connection.commit()
+            cur.close()
+            return render_template("search.html",booksData=booksData,search=search)
+
+        return render_template("search.html")
+    
+    return render_template("search.html")
+
+
+@app.route("/books",methods=["POST","GET"])
+def books():
+    # if request.method == "POST":
+        cur = mysql.connection.cursor()
+        # cur.execute("SELECT * from Books as b,Authors as a where b.authorID = a.authorID")
+        cur.execute("SELECT b.bookID,a.authorID,b.publisherID,b.title,b.genre,b.publicationYear,b.price,a.firstName,a.lastName  FROM Books as b INNER JOIN Authors as a ON b.authorID = a.authorID  ORDER BY bookID")
+        booksData = cur.fetchall()
+        booksData = list(booksData)
+        cur.execute("SELECT DISTINCT genre from Books")
+        genreData = list(cur.fetchall())
+        print("HIIIIIIIIIIIIIIIIIIIIIIIIII")
+        print(genreData)
+        print(booksData)
+        mysql.connection.commit()
+        cur.close()
+        return render_template("books.html",booksData=booksData,genreData=genreData)
+
+    # else:
+    #     print("FAILL")
+        
+    # return render_template("books.html")
+    # return "HIIII"
+
+@app.route("/addBook",methods=["POST","GET"])
+def addBook():
+    if request.method == "POST":
+
+        # print("inn")
+        bookID = str(request.form.get("bookID"))
+        title = str(request.form.get("title"))
+        genre = str(request.form.get("genre"))
+        fname = str(request.form.get("fname"))
+        lname = str(request.form.get("lname"))
+        year = str(request.form.get("year"))
+        price = str(request.form.get("price"))
+        country = str(request.form.get("country"))
+
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT publisherID from Publishers WHERE country = %s",(country,))
+        publisherID = list(cur.fetchall())
+        print(publisherID)
+        if not publisherID:
+            print("PublisherID not present")
+            # cur.execute("INSERT INTO Customers(customerd) VALUES (%s,%s,)",(username,email,password))
+            cur.execute("INSERT INTO Publishers(country) VALUES (%s)",(country,))
+            cur.execute("SELECT publisherID from Publishers WHERE country = %s",(country,))
+            publisherID = list(cur.fetchall())
+            print(publisherID)
+
+
+        cur.execute("SELECT authorID from Authors WHERE firstName = %s AND lastName = %s",(fname,lname,))
+        authorID = list(cur.fetchall())
+        print(authorID)
+        if not authorID:
+            print("authorID not present")
+            cur.execute("INSERT INTO Authors(firstName,lastName) VALUES (%s,%s)",(fname,lname,))
+            cur.execute("SELECT authorID from Authors WHERE firstName = %s AND lastName = %s",(fname,lname,))
+            authorID = list(cur.fetchall())
+            print(authorID)
+
+        cur.execute("INSERT INTO Books(bookID,authorID,publisherID,title,genre,publicationYear,price) VALUES (%s,%s,%s,%s,%s,%s,%s)",(bookID,authorID,publisherID,title,genre,year,price))
+        print("Book Added Successfully")
+        
+        mysql.connection.commit()
+        cur.close()
+
+
+        return redirect(url_for("books"))
+    # return render_template("product_detail.html")
+    return "HOME PAGE"
+
+@app.route("/updateBook",methods=["POST","GET"])
+def updateBook():
+    if request.method == "POST":
+        bookID = str(request.form.get("bookID"))
+        price1 = str(request.form.get("price1"))
+        price2 = str(request.form.get("price2"))
+        # genre = str(request.form.get("genre"))
+        fname = str(request.form.get("fname"))
+        lname = str(request.form.get("lname"))
+        country = str(request.form.get("country"))
+
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT authorID from Authors WHERE firstName = %s AND lastName = %s",(fname,lname,))
+        authorID = list(cur.fetchall())
+        cur.execute("SELECT publisherID from Publishers WHERE country = %s",(country,))
+        publisherID = list(cur.fetchall())
+        # cur.execute("INSERT INTO Books(authorID,publisherID,title,genre,publicationYear,price) VALUES (%s,%s,%s,%s,%s,%s)",(authorID,publisherID,title,genre,year,price))
+        cur.execute("UPDATE Books SET price = %s WHERE bookID = %s AND authorID = %s AND publisherID  = %s AND price = %s",(price2,bookID,authorID[0],publisherID[0],price1))
+        print("Book Price update Successfully")
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for("books"))
+    # return render_template("product_detail.html")
+    return "HOME PAGE"
+
+
+@app.route("/deleteBook",methods=["POST","GET"])
+def deleteBook():
+    if request.method == "POST":
+        bookID = str(request.form.get("bookID"))
+        # title = str(request.form.get("title"))
+        # genre = str(request.form.get("genre"))
+        # price = str(request.form.get("price"))
+        fname = str(request.form.get("fname"))
+        lname = str(request.form.get("lname"))
+        country = str(request.form.get("country"))
+
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT authorID from Authors WHERE firstName = %s AND lastName = %s",(fname,lname))
+        authorID = cur.fetchone()
+        cur.execute("SELECT count(authorID) from Books WHERE authorID = %s",(authorID))
+        authorbooks = cur.fetchone()
+        cur.execute("SELECT publisherID FROM Publishers WHERE country = %s",(country,))
+        publisherID = cur.fetchone()
+        cur.execute("SELECT count(authorID) FROM Books WHERE publisherID = %s",(publisherID,))
+        publisherbooks = cur.fetchone()
+        
+        cur.execute("DELETE FROM Books WHERE bookID = %s",(bookID))
+        
+        if authorbooks[0] == 1:
+            cur.execute("DELETE FROM Authors WHERE authorID = %s",(authorID[0],))
+        if publisherbooks[0] == 1:
+            cur.execute("DELETE FROM Publishers WHERE publisherID = %s",(publisherID[0],))
+        
+        print("Book deleted Successfully")
+        mysql.connection.commit()
+        cur.close()
+        return redirect(url_for("books"))
+    # return render_template("product_detail.html")
+    return "HOME PAGE"
+
+
+@app.route("/users",methods=["POST","GET"])
+def users():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT * from Admins")
+    adminData = list(cur.fetchall())
+    cur.execute("SELECT * from Customers")
+    customerData = list(cur.fetchall())
+    mysql.connection.commit()
+    cur.close()
+    return render_template("users.html",adminData=adminData,customerData=customerData)
+
+@app.route("/contactUs",methods=["POST","GET"])
+def contactUs():
+    if request.method == "POST":
+        fname = str(request.form.get("fname"))
+        lname = str(request.form.get("lname"))
+        email = str(request.form.get("email"))
+        message = str(request.form.get("message"))
+        timestamp = datetime.datetime.now()
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO ContactUs(firstName,lastName,emailID,message,timestamp) VALUES (%s,%s,%s,%s,%s)",(fname,lname,email,message,timestamp))
+        mysql.connection.commit()
+        cur.close()
+        return "Message Submitted"
+
+    return "HOME PAGE"
+    # return redirect("/login")
+
+@app.route("/test",methods=["POST","GET"])
+def test():
+    return render_template("customers/cart.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
