@@ -136,3 +136,22 @@ SELECT  b.bookID,a.authorID,b.publisherID,b.title,b.genre,b.publicationYear,b.pr
 
 -- search by author
 SELECT  b.bookID,a.authorID,b.publisherID,b.title,b.genre,b.publicationYear,b.price,a.firstName,a.lastName  FROM Books as b,Authors as a WHERE a.firstName LIKE '%o%' AND b.authorID = a.authorID;
+
+-- display books by certain bookID
+SELECT  b.bookID,b.title,b.genre,b.publicationYear,b.price,a.firstName,a.lastName  FROM Books as b,Authors as a WHERE b.bookID = '1' AND b.authorID = a.authorID;
+
+
+
+select * from Customers;
+select * from Admins WHERE adminID='admin1';
+
+
+create table Payment(
+customerID varchar(50),
+payment int not null
+);
+select * from Payment;
+insert into Payment(customerID) values('geervaniii',null);
+
+
+

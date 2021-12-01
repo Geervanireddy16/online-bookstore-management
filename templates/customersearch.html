@@ -30,7 +30,7 @@
 		<div id="top-bar" class="container">
 			<div class="row">
 				<div class="span4">
-					<a href="/adminindex" class="logo pull-left"><img src="static/images/websitelogo.png" class="site_logo" alt=""></a>
+					<a href="/customerindex" class="logo pull-left"><img src="static/images/websitelogo.png" class="site_logo" alt=""></a>
 				</div>
 				<div class="span8">
 					<div class="account pull-right">
@@ -46,22 +46,10 @@
 				<div class="navbar-inner main-menu">	
 					<nav id="menu" class="pull-right">
 						<ul>
-							<li><a href="./adminindex">Home</a></li>
-							<li><a href="./search">Search Books</a></li>
-							<li><a href="./books" method="POST">Books</a>					
-								<ul>
-									<li><a href="./books">Add</a></li>									
-									<li><a href="./books">Update</a></li>
-									<li><a href="./books">Delete</a></li>			
-								</ul>
-							</li>
-							<li><a href="#">Inventory</a></li>	
-							<li><a href="./users">Users</a>					
-								<ul>
-									<li><a href="./users">Admins</a></li>									
-									<li><a href="./users">Customers</a></li>					
-								</ul>
-							</li>
+							<li><a href="./customerindex">Home</a></li>
+							<li><a href="./customersearch">Search Books</a></li>
+							<!-- <li><a href="#">My Cart</a></li> -->
+							<!-- <li><a href="#">Checkout</a></li>	 -->
 							<li><a href="./myaccount">My Account</a></li>		
 						</ul>
 					</nav>
@@ -81,7 +69,7 @@
 								</h4>
 								<div id="myCarousel-2" class="myCarousel carousel slide">
 									<div class="carousel-inner">
-										<form action="{{url_for('search')}}" class="form-stacked" method="POST">
+										<form action="{{url_for('customersearch')}}" class="form-stacked" method="POST">
 											<input type="hidden" name="next" value="/">
 											<fieldset>
 
