@@ -48,8 +48,6 @@
 						<ul>
 							<li><a href="./customerindex">Home</a></li>
 							<li><a href="./customersearch">Search Books</a></li>
-							<!-- <li><a href="#">My Cart</a></li> -->
-							<!-- <li><a href="#">Checkout</a></li>	 -->
 							<li><a href="./myaccount">My Account</a></li>		
 						</ul>
 					</nav>
@@ -69,7 +67,7 @@
 								</h4>
 								<div id="myCarousel-2" class="myCarousel carousel slide">
 									<div class="carousel-inner">
-										<form action="{{url_for('customersearch')}}" class="form-stacked" method="POST">
+										<form action="{{url_for('customersearchRoute')}}" class="form-stacked" method="POST">
 											<input type="hidden" name="next" value="/">
 											<fieldset>
 
@@ -123,10 +121,10 @@
                                                         <li class="span2">
                                                             <div class="product-box">
                                                                 <span class="sale_tag"></span>
-                                                                <p><a href="#"><img src="static/images/books/book.png" alt="" /></a></p>
-                                                                <a href="#" class="title">{{book[3]}} ({{book[0]}})</a><br/>
-                                                                <a href="#" class="title">- {{book[7]}} {{book[8]}}</a><br/>
-                                                                <a href="#" class="category">{{book[4]}}</a>
+                                                                <p><a href="./bookdetail{{book[0]}}"><img src="static/images/books/book.png" alt="" /></a></p>
+                                                                <a href="/bookdetail{{book[0]}}" class="title">{{book[3]}} ({{book[0]}})</a><br/>
+                                                                <a href="/bookdetail{{book[0]}}" class="title">- {{book[7]}} {{book[8]}}</a><br/>
+                                                                <a href="/bookdetail{{book[0]}}" class="category">{{book[4]}}</a>
                                                                 <p class="price">Rs {{book[6]}} /-</p>
                                                             </div>
                                                         </li>
@@ -139,10 +137,10 @@
                                                         <li class="span2">
                                                             <div class="product-box">
                                                                 <span class="sale_tag"></span>
-                                                                <p><a href="#"><img src="static/images/books/book.png" alt="" /></a></p>
-                                                                <a href="#" class="title">{{book[3]}} ({{book[0]}})</a><br/>
-                                                                <a href="#" class="title">- {{book[7]}} {{book[8]}}</a><br/>
-                                                                <a href="#" class="category">{{book[4]}}</a>
+                                                                <p><a href="./bookdetail{{book[0]}}"><img src="static/images/books/book.png" alt="" /></a></p>
+                                                                <a href="/bookdetail{{book[0]}}" class="title">{{book[3]}} ({{book[0]}})</a><br/>
+                                                                <a href="/bookdetail{{book[0]}}" class="title">- {{book[7]}} {{book[8]}}</a><br/>
+                                                                <a href="/bookdetail{{book[0]}}" class="category">{{book[4]}}</a>
                                                                 <p class="price">Rs {{book[6]}} /-</p>
                                                             </div>
                                                         </li>
@@ -155,10 +153,10 @@
                                                         <li class="span2">
                                                             <div class="product-box">
                                                                 <span class="sale_tag"></span>
-                                                                <p><a href="#"><img src="static/images/books/book.png" alt="" /></a></p>
-                                                                <a href="#" class="title">{{book[3]}} ({{book[0]}})</a><br/>
-                                                                <a href="#" class="title">- {{book[7]}} {{book[8]}}</a><br/>
-                                                                <a href="#" class="category">{{book[4]}}</a>
+                                                                <p><a href="./bookdetail{{book[0]}}"><img src="static/images/books/book.png" alt="" /></a></p>
+                                                                <a href="/bookdetail{{book[0]}}" class="title">{{book[3]}} ({{book[0]}})</a><br/>
+                                                                <a href="/bookdetail{{book[0]}}" class="title">- {{book[7]}} {{book[8]}}</a><br/>
+                                                                <a href="/bookdetail{{book[0]}}" class="category">{{book[4]}}</a>
                                                                 <p class="price">Rs {{book[6]}} /-</p>
                                                             </div>
                                                         </li>
@@ -175,61 +173,9 @@
 					</div>				
 				</div>
 			</section>
-			<!-- <section class="our_client">
-				<h4 class="title"><span class="text">Developers</span></h4>
-				<div class="row">					
-					<div class="span3">
-						<a href="#"><img alt="" src="static/images/clients/14.png"></a>
-					</div>
-					<div class="span3">
-						<a href="#"><img alt="" src="static/images/clients/35.png"></a>
-					</div>
-					<div class="span3">
-						<a href="#"><img alt="" src="static/images/clients/1.png"></a>
-					</div>
-					<div class="span3">
-						<a href="#"><img alt="" src="static/images/clients/2.png"></a>
-					</div>
-				</div>
-			</section> -->
-
-			<!-- <section id="footer-bar">
-				<div class="row">
-					<div class="span3">
-						<h4>Navigation</h4>
-						<ul class="nav">
-							<li><a href="./index.html">Homepage</a></li>  
-							<li><a href="./about.html">About Us</a></li>
-							<li><a href="./contact.html">Contac Us</a></li>
-							<li><a href="./cart.html">Your Cart</a></li>
-							<li><a href="./register.html">Login</a></li>							
-						</ul>					
-					</div>
-					<div class="span4">
-						<h4>My Account</h4>
-						<ul class="nav">
-							<li><a href="#">My Account</a></li>
-							<li><a href="#">Order History</a></li>
-							<li><a href="#">Wish List</a></li>
-							<li><a href="#">Newsletter</a></li>
-						</ul>
-					</div>
-					<div class="span5">
-						<p class="logo"><img src="static/images/logo.png" class="site_logo" alt=""></p>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
-						<br/>
-						<span class="social_icons">
-							<a class="facebook" href="#">Facebook</a>
-							<a class="twitter" href="#">Twitter</a>
-							<a class="skype" href="#">Skype</a>
-							<a class="vimeo" href="#">Vimeo</a>
-						</span>
-					</div>					
-				</div>	
-			</section> -->
 
 			<section id="copyright">
-				<!-- <span>Copyright 2013 bootstrappage template  All right reserved.</span> -->
+
 			</section>
 		</div>
 		<script src="static/js/common.js"></script>

@@ -34,19 +34,13 @@
 			<div class="row">
 				<div class="span4">
 					<a href="/" class="logo pull-left"><img src="static/images/websitelogo.png" class="site_logo" alt=""></a>
-					<!-- <form method="POST" class="search_form">
-						<input type="text" class="input-block-level search-query" Placeholder="Search here">
-					</form> -->  <!--changed -->
+
 				</div>
 				<div class="span8">
 					<div class="account pull-right">
 						<ul class="user-menu">				
-							<!-- <li><a href="#">My Account</a></li> -->
-							<!-- <li><a href="cart.html">Cart</a></li>
-							<li><a href="checkout.html">Checkout</a></li>					 -->
 							<li><a href="./register">Register</a></li>
 							<li><a href="./login">Login</a></li>
-							<!-- <li><a href="/login">Admin Login</a></li>	 -->
 						</ul>
 					</div>
 				</div>
@@ -54,32 +48,6 @@
 		</div>
 		<div id="wrapper" class="container">
 
-			<!-- <section class="navbar main-menu">
-				<div class="span4">
-					<form method="POST" class="search_form">
-						<input type="text" class="input-block-level search-query" Placeholder="Search here">
-					</form>	
-				</div>
-				<div class="navbar-inner main-menu">
-					<nav id="menu" class="pull-right">
-						<ul>
-							<li><a href="./products.html">Genre</a>					
-								<ul>
-									<li><a href="./products.html">Adventure</a></li>									
-									<li><a href="./products.html">Classics</a></li>
-									<li><a href="./products.html">Comics</a></li>
-									<li><a href="./products.html">Horror</a></li>	
-									<li><a href="./products.html">Mystery</a></li>	
-									<li><a href="./products.html">Romance</a></li>					
-								</ul>
-							</li>
-							<li><a href="#">My Account</a></li>
-							<li><a href="cart.html"> My Cart</a></li>
-							<li><a href="checkout.html">Checkout</a></li>		
-						</ul>
-					</nav>
-				</div>
-			</section> -->
 			</br>
 			<section  class="homepage-slider" id="home-slider">
 				<div class="flexslider">
@@ -87,14 +55,6 @@
 						<li>
 							<img src="static/images/carousel/carousel1.jpg" alt="" />
 						</li>
-						<!-- <li>
-							<img src="static/images/carousel/banner2.jpg" alt="" />
-							 <div class="intro">
-								<h1>Mid season sale</h1>
-								<p><span>Up to 50% Off</span></p>
-								<p><span>On selected items online and in stores</span></p>
-							</div>
-						</li> -->
 					</ul>
 				</div>			
 			</section>
@@ -125,63 +85,12 @@
 													<div class="product-box">
 														<span class="sale_tag"></span>
 														<p><a href="./register"><img src="static/images/books/genre.png" alt="" /></a></p>
-														<!-- <a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
-														<a href="products.html" class="category">Commodo consequat</a> -->
 														<p class="price">{{genre[0]}}</p>
 													</div>
 												</li>
 												{% endfor %}
 											</ul>
-											<!-- <ul class="thumbnails">										
-												<li class="span2">
-													<div class="product-box">
-														<span class="sale_tag"></span>
-														<p><a href="product_detail.html"><img src="static/images/books/Adventure1.jpg" alt="" /></a></p>
-														<a href="product_detail.html" class="title">Alice in the Wonderland</a><br/>
-														<a href="products.html" class="category">Adventure</a>
-														<p class="price">$17.25</p>
-													</div>
-												</li>
-											</ul> -->
 										</div>
-
-										<!-- <div class="item">
-											<ul class="thumbnails">
-												<li class="span3">
-													<div class="product-box">
-														<p><a href="product_detail.html"><img src="static/images/books/Adventure5.jpg" alt="" /></a></p>
-														<a href="product_detail.html" class="title">The Hobbit</a><br/>
-														<a href="products.html" class="category">Adventure</a>
-														<p class="price">$22.30</p>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="product-box">
-														<p><a href="product_detail.html"><img src="static/images/ladies/6.jpg" alt="" /></a></p>
-														<a href="product_detail.html" class="title">Ut wisi enim ad</a><br/>
-														<a href="products.html" class="category">Commodo consequat</a>
-														<p class="price">$40.25</p>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="product-box">
-														<p><a href="product_detail.html"><img src="static/images/ladies/7.jpg" alt="" /></a></p>
-														<a href="product_detail.html" class="title">You think water</a><br/>
-														<a href="products.html" class="category">World once</a>
-														<p class="price">$10.45</p>
-													</div>
-												</li>
-												<li class="span3">
-													<div class="product-box">
-														<p><a href="product_detail.html"><img src="static/images/ladies/8.jpg" alt="" /></a></p>
-														<a href="product_detail.html" class="title">Quis nostrud exerci</a><br/>
-														<a href="products.html" class="category">Quis nostrud</a>
-														<p class="price">$35.50</p>
-													</div>
-												</li>																																	
-											</ul>
-										</div> -->
-
 
 									</div>							
 								</div>
@@ -213,9 +122,6 @@
 																<a href="/register" class="title">- {{book[7]}} {{book[8]}}</a><br/>
 																<a href="/register" class="category">{{book[4]}}</a>
 																<p class="price">Rs {{book[6]}} /-</p>
-																<!-- <a href="product_detail.html" class="title">Alice in the Wonderland</a><br/>
-																<a href="products.html" class="category">Adventure</a>
-																<p class="price">$17.25</p> -->
 															</div>
 														</li>	
 													{% endif %}									
@@ -242,29 +148,8 @@
 									<div class="carousel-inner">
 										<div class="active item">
 											<ul class="thumbnails">												
-												<!-- <li class="span3">
-													<div class="product-box">
-														<p><a href="product_detail.html"><img src="static/images/cloth/bootstrap-women-ware1.jpg" alt="" /></a></p>
-														<a href="product_detail.html" class="title">Quis nostrud exerci tation</a><br/>
-														<a href="products.html" class="category">Quis nostrud</a>
-														<p class="price">$17.55</p>
-													</div>
-												</li> -->
 											</ul>
 										</div>
-
-										<!-- <div class="item">
-											<ul class="thumbnails">
-												<li class="span3">
-													<div class="product-box">
-														<p><a href="product_detail.html"><img src="static/images/cloth/bootstrap-women-ware4.jpg" alt="" /></a></p>
-														<a href="product_detail.html" class="title">Know exactly</a><br/>
-														<a href="products.html" class="category">Quis nostrud</a>
-														<p class="price">$45.50</p>
-													</div>
-												</li>																																	
-											</ul>
-										</div> -->
 
 									</div>							
 								</div>
@@ -282,7 +167,6 @@
 										<h4><strong>A N Geervani Reddy</strong></h4>
 										<h9>Third Year IT Student</h9>
 										<p>Grno: 21911194 & Rollno: 331001</p>
-										<!-- <p>geervani.21911194@viit.ac.in</p>	 -->
 										<a href="mailto:geervani.21911194@viit.ac.in">
 											<i class="far fa-envelope" style="font-size:24px;color:black"></i></a>
 										<a href="https://www.linkedin.com/in/geervani-reddy">
@@ -299,12 +183,11 @@
 										<h4><strong>Shyam Aher</strong></h4>
 										<h9>Third Year Information Technology</h9>
 										<p>Grno: 21910485 & Rollno: 331003</p>
-										<!-- <p>shyam.21910485@viit.ac.in</p> -->
-										<a href="mailto:geervani.21911194@viit.ac.in">
+										<a href="mailto:shyam.21910485@viit.ac.in">
 											<i class="far fa-envelope" style="font-size:24px;color:black"></i></a>
-										<a href="https://www.linkedin.com/in/geervani-reddy">
+										<a href="https://www.linkedin.com/in/shyam-aher-034434191">
 											<i class="fab fa-linkedin" style="font-size:24px;color:blue"></i></a>
-										<a href="https://github.com/Geervanireddy16">
+										<a href="https://github.com/Shyam17360">
 											<i class="fab fa-github" style="font-size:24px;color:black"></i></a>								
 									</div>
 								</div>
@@ -316,12 +199,11 @@
 										<h4><strong>Sakshi Gaikwad</strong></h4>
 										<h9>Third Year Information Technology</h9>
 										<p>Grno: 21910485 & Rollno: 331003</p>
-										<!-- <p>shyam.21910485@viit.ac.in</p> -->
-										<a href="mailto:geervani.21911194@viit.ac.in">
+										<a href="mailto:sakshi.21910962@viit.ac.in">
 											<i class="far fa-envelope" style="font-size:24px;color:black"></i></a>
-										<a href="https://www.linkedin.com/in/geervani-reddy">
+										<a href="https://www.linkedin.com/in/sakshi-gaikwad-bb5b0a197">
 											<i class="fab fa-linkedin" style="font-size:24px;color:blue"></i></a>
-										<a href="https://github.com/Geervanireddy16">
+										<a href="https://github.com/Sakshi238">
 											<i class="fab fa-github" style="font-size:24px;color:black"></i></a>			
 									</div>
 								</div>
@@ -333,47 +215,25 @@
 										<h4><strong>Kartik Hiremath</strong></h4>
 										<h9>Third Year Information Technology</h9>
 										<p>Grno: 21910485 & Rollno: 331003</p>
-										<!-- <p>shyam.21910485@viit.ac.in</p> -->
-										<a href="mailto:geervani.21911194@viit.ac.in">
+										<a href="mailto:kartik.21910418@viit.ac.in">
 											<i class="far fa-envelope" style="font-size:24px;color:black"></i></a>
-										<a href="https://www.linkedin.com/in/geervani-reddy">
+										<a href="https://www.linkedin.com/in/kartik-hiremath-54b410121">
 											<i class="fab fa-linkedin" style="font-size:24px;color:blue"></i></a>
-										<a href="https://github.com/Geervanireddy16">
+										<a href="https://github.com/kartikraj">
 											<i class="fab fa-github" style="font-size:24px;color:black"></i></a>	
 									</div>
 								</div>
 							</div>	
-						</div>
-						
+						</div>	
 						
 					</div>				
 				</div>
 			</section>
-			<!-- <section class="our_client">
-				<h4 class="title"><span class="text">Developers</span></h4>
-				<div class="row">					
-					<div class="span3">
-						<a href="#"><img alt="" src="static/images/clients/14.png"></a>
-					</div>
-					<div class="span3">
-						<a href="#"><img alt="" src="static/images/clients/35.png"></a>
-					</div>
-					<div class="span3">
-						<a href="#"><img alt="" src="static/images/clients/1.png"></a>
-					</div>
-					<div class="span3">
-						<a href="#"><img alt="" src="static/images/clients/2.png"></a>
-					</div>
-				</div>
-			</section> -->
-
 			<section id="footer-bar">
-				<!-- <section class="main-content">				 -->
 					<div class="row">
 						<div class="span3">	
 							<h3 class="title"><span><strong>CONTACT US</strong></span></h3>				
-							<!-- <h4 class="title"><span class="text"><strong>CONTACT US</strong></span></h4> -->
-							<form action="{{url_for('contactUs')}}" class="form-stacked" method="POST">
+							<form action="{{url_for('contactUsRoute')}}" class="form-stacked" method="POST">
 								<input type="hidden" name="next" value="/">
 								<fieldset>
 									<div class="control-group">
@@ -398,34 +258,19 @@
 										<label class="control-label">Message</label>
 										<div class="controls">
 											<input type="text" placeholder="Write your message..." id="username" class="input-xlarge" name="message">
-											<!-- <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px;width:400px"></textarea> -->
 										</div>
 									</div>
-									<!-- <div class="control-group">
-										<label class="control-label">Are you a registered user?</label>
-										<div class="controls">
-											<select id="account" name="account">
-												<option value="yes" selected>Yes</option>
-												<option value="no">No</option>
-											  </select>
-										</div>
-									</div> -->
-	
 									<div class="control-group">
 										<input tabindex="3" class="btn btn-inverse large" type="submit" value="Submit" name="submit">
-										<!-- <hr> -->
-										<!-- <p class="reset"><a tabindex="4" href="#" title="Recover your password">Forgot password?</a></p> -->
-										<!-- <p class="reset">Recover your <a tabindex="4" href="#" title="Recover your username or password">username or password</a></p> -->
 									</div>
 								</fieldset>
 							</form>				
 						</div>
 					</div>
-				<!-- </section> -->
 			</section>
-			<!-- <section id="copyright">
-				<span>Copyright 2013 bootstrappage template  All right reserved.</span>
-			</section> -->
+			<section id="copyright">
+			</section>
+
 		</div>
 		<script src="static/js/common.js"></script>
 		<script src="static/js/jquery.flexslider-min.js"></script>

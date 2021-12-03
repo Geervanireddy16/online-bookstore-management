@@ -41,6 +41,10 @@ a:hover{
 .center{
 	text-align:center !important;
 }
+.content{
+	width:300px;
+	margin:auto
+}
 .right{
 	text-align:right !important;
 }

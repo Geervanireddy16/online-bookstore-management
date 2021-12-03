@@ -43,95 +43,93 @@
 		</div>
 		<div id="wrapper" class="container">			
 			<section class="main-content">				
-				<div class="row">
-					<!-- <div class="span7">			Originally		 --> 
+				<div class="row"> 
 					<div class="span12">					
 						<h4 class="title"><span class="text"><strong>Register</strong> Form</span></h4>
-						<form action="{{url_for('register')}}" method="POST" class="form-stacked" id="register">
+						<div class = "content">
+						<form action="{{url_for('registerRoute')}}" method="POST" class="form-stacked" id="register">
 							<fieldset>
 								<div class="control-group">
 									<label class="control-label">Username</label>
 									<div class="controls">
-										<input type="text" placeholder="Enter your username" class="input-xlarge" name="username">
+										<input type="text" placeholder="Enter your username" class="input-xlarge" name="username" required = "required">
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label">Email address:</label>
 									<div class="controls">
-										<input type="email" placeholder="Enter your email" class="input-xlarge" name="email">
+										<input type="email" placeholder="Enter your email" class="input-xlarge" name="email" required = "required">
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label">Password:</label>
 									<div class="controls">
-										<input type="password" placeholder="Enter your password" class="input-xlarge" name="password">
+										<input type="password" placeholder="Enter your password" class="input-xlarge" name="password" required = "required" minlength = "8">
 									</div>
 								</div>	
-
-
 								<div class="control-group">
 									<label class="control-label">First Name</label>
 									<div class="controls">
-										<input type="text" placeholder="Enter your first name" class="input-xlarge" name="fname">
+										<input type="text" placeholder="Enter your first name" class="input-xlarge" name="fname" required = "required">
 									</div>
 								</div>	
 								<div class="control-group">
 									<label class="control-label">Last Name</label>
 									<div class="controls">
-										<input type="text" placeholder="Enter your password" class="input-xlarge" name="lname">
+										<input type="text" placeholder="Enter your last name" class="input-xlarge" name="lname" required = "required">
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label">Phone Number</label>
 									<div class="controls">
-										<input type="number" placeholder="Enter your password" class="input-xlarge" name="phone">
+										<input type="number" placeholder="Enter your phone number" class="input-xlarge" name="phone" required = "required">
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label">State</label>
 									<div class="controls">
-										<input type="text" placeholder="Enter your password" class="input-xlarge" name="state">
+										<input type="text" placeholder="Enter your state" class="input-xlarge" name="state" required = "required">
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label">Pincode</label>
 									<div class="controls">
-										<input type="number" placeholder="Enter your password" class="input-xlarge" name="pincode">
+										<input type="number" placeholder="Enter your pincode" class="input-xlarge" name="pincode" required = "required">
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label">Address</label>
 									<div class="controls">
-										<input type="text" placeholder="Enter your password" class="input-xlarge" name="address">
+										<input type="text" placeholder="Enter your address" class="input-xlarge" name="address" required = "required">
 									</div>
 								</div>
 								<div class="control-group">
 									<label class="control-label">Country</label>
 									<div class="controls">
-										<input type="text" placeholder="Enter your password" class="input-xlarge" name="country">
+										<input type="text" placeholder="Enter your country" class="input-xlarge" name="country" required = "required">
 									</div>
 								</div>
-								
-								
-								<!-- <div class="control-group">
-									<p>Now that we know who you are. I'm not a mistake! In a comic, you know how you can tell who the arch-villain's going to be?</p>
-								</div> -->
-								<!-- <hr> -->
+
 								<div class="actions"><input tabindex="9" class="btn btn-inverse large" type="submit" value="Create your account"></div>
+
 							</fieldset>
-						</form>					
+						</form>
+					</div>					
 					</div>				
 				</div>
 			</section>	
-
 		</div>
-		<script src="static/js/common.js"></script>
-		<script>
-			$(document).ready(function() {
-				$('#checkout').click(function (e) {
-					document.location.href = "checkout.html";
-				})
-			});
-		</script>		
+		{% if response == 1 %}
+		<script>								
+			alert("Registration successful");
+		</script>
+		{% endif %}
+
+		{% if response == 0 %}								
+		<script>								
+			alert("Registration Failed");
+		</script>
+		{% endif %}
+	
     </body>
 </html>

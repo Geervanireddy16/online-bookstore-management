@@ -31,15 +31,11 @@
 			<div class="row">
 				<div class="span4">
 					<a href="/adminindex" class="logo pull-left"><img src="static/images/websitelogo.png" class="site_logo" alt=""></a>
-					<!-- <form method="POST" class="search_form">
-						<input type="text" class="input-block-level search-query" Placeholder="Search here">
-					</form> -->  <!--changed -->
 				</div>
 				<div class="span8">
 					<div class="account pull-right">
 						<ul class="user-menu">				
 							<li><a href="./logout">Logout</a></li>
-							<!-- <li><a href="/login">Admin Login</a></li>	 -->
 						</ul>
 					</div>
 				</div>
@@ -47,19 +43,7 @@
 		</div>
 		<div id="wrapper" class="container">
 			<section class="navbar main-menu">
-				<!-- <div class="span4">
-					<form method="POST" class="search_form">
-						<input type="text" class="input-block-level search-query" Placeholder="Search here">
-					</form>	
-				</div> -->
-				<div class="navbar-inner main-menu">	
-					<!-- <form method="POST" class="search_form">
-						<input type="text" class="input-block-level search-query" Placeholder="Search here">
-					</form>	 -->
-					<!--changed -->
-					<!-- <a href="index.html" class="logo pull-left"><img src="static/images/websitelogo.png" class="site_logo" alt=""></a>		 -->
-					<!-- <a href="index.html" class="logo pull-left"><img src="static/images/logo.png" class="site_logo" alt=""></a> -->
-					
+				<div class="navbar-inner main-menu">				
 					<nav id="menu" class="pull-right">
 						<ul>
 							<li><a href="./adminindex">Home</a></li>
@@ -71,40 +55,18 @@
 									<li><a href="./books">Delete</a></li>			
 								</ul>
 							</li>
-							<li><a href="#">Inventory</a></li>	
+							<li><a href="./inventory">Inventory</a></li>	
 							<li><a href="./users">Users</a>					
 								<ul>
 									<li><a href="./users">Admins</a></li>									
 									<li><a href="./users">Customers</a></li>					
 								</ul>
 							</li>
-							<li><a href="#">My Account</a></li>		
+							<li><a href="./myaccount">My Account</a></li>		
 						</ul>
 					</nav>
 				</div>
 			</section>
-			<!-- <section  class="homepage-slider" id="home-slider">
-				<div class="flexslider">
-					<ul class="slides">
-						<li>
-							<img src="static/images/carousel/carousel1.jpg" alt="" />
-						</li>
-						<li>
-							<img src="static/images/carousel/carousel2.jpg" alt="" />
-							<div class="intro">
-								<h1>Mid season sale</h1>
-								<p><span>Up to 50% Off</span></p>
-								<p><span>On selected items online and in stores</span></p>
-							</div>
-						</li>
-					</ul>
-				</div>			
-			</section> -->
-			<!-- <section class="header_text">
-				We stand for top quality templates. Our genuine developers always optimized bootstrap commercial templates. 
-				<br/>Don't miss to use our cheap abd best bootstrap templates.
-			</section> -->
-
 
 			<section class="main-content">
 				<div class="row">
@@ -115,61 +77,65 @@
 							<div class="span12">
 								<h4 class="title">
 									<span class="pull-left"><span class="text"><span class="line"><strong>ADD </strong>BOOK</span></span></span>
-									<!-- <span class="pull-right">
-										<a class="left button" href="#myCarousel-2" data-slide="prev"></a><a class="right button" href="#myCarousel-2" data-slide="next"></a>
-									</span> -->
 								</h4>
 								<div id="myCarousel-2" class="myCarousel carousel slide">
 									<div class="carousel-inner">
-										<form action="{{url_for('addBook')}}" class="form-stacked" method="POST">
+										<div class = "content">
+										<form action="{{url_for('addBookRoute')}}" class="form-stacked" method="POST">
 											<input type="hidden" name="next" value="/">
 											<fieldset>
 												<div class="control-group">
 													<label class="control-label">Book ISBN</label>
 													<div class="controls">
-														<input type="text" placeholder="Enter book ISBN" id="username" class="input-xlarge" name="bookID">
+														<input type="number" placeholder="Enter book ISBN" id="username" class="input-xlarge" name="bookID" required>
 													</div>
 												</div>
 												<div class="control-group">
 													<label class="control-label">Book Title</label>
 													<div class="controls">
-														<input type="text" placeholder="Enter book title" id="username" class="input-xlarge" name="title">
+														<input type="text" placeholder="Enter book title" id="username" class="input-xlarge" name="title" required>
 													</div>
 												</div>
 												<div class="control-group">
 													<label class="control-label">Genre</label>
 													<div class="controls">
-														<input type="text" placeholder="Enter book genre" id="username" class="input-xlarge" name="genre">
+														<input type="text" placeholder="Enter book genre" id="username" class="input-xlarge" name="genre" required>
 													</div>
 												</div>
 												<div class="control-group">
 													<label class="control-label">Price</label>
 													<div class="controls">
-														<input type="text" placeholder="Enter book price" id="username" class="input-xlarge" name="price">
+														<input type="number" placeholder="Enter book price" id="username" class="input-xlarge" name="price" required>
 													</div>
 												</div>
 												<div class="control-group">
 													<label class="control-label">Author First Name</label>
 													<div class="controls">
-														<input type="text" placeholder="Enter first name" id="username" class="input-xlarge" name="fname">
+														<input type="text" placeholder="Enter first name" id="username" class="input-xlarge" name="fname" required>
 													</div>
 												</div>
 												<div class="control-group">
 													<label class="control-label">Author Last Name</label>
 													<div class="controls">
-														<input type="text" placeholder="Enter last name" id="username" class="input-xlarge" name="lname">
+														<input type="text" placeholder="Enter last name" id="username" class="input-xlarge" name="lname" required>
 													</div>
 												</div>
 												<div class="control-group">
 													<label class="control-label">Publication year</label>
 													<div class="controls">
-														<input type="text" placeholder="Enter the year" id="username" class="input-xlarge" name="year">
+														<input type="number" placeholder="Enter the year" id="username" class="input-xlarge" name="year" required>
 													</div>
 												</div>
 												<div class="control-group">
 													<label class="control-label">Publication country</label>
 													<div class="controls">
-														<input type="text" placeholder="Enter the country" id="username" class="input-xlarge" name="country">
+														<input type="text" placeholder="Enter the country" id="username" class="input-xlarge" name="country" required>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">Stock</label>
+													<div class="controls">
+														<input type="number" placeholder="Enter the stock of book" id="username" class="input-xlarge" name="stock" required>
 													</div>
 												</div>
 				
@@ -177,7 +143,8 @@
 													<input tabindex="3" class="btn btn-inverse large" type="submit" value="Add Book">
 												</div>
 											</fieldset>
-										</form>			
+										</form>	
+									</div>		
 									</div>							
 								</div>
 							</div>						
@@ -192,62 +159,52 @@
 								</h4>
 								<div id="myCarousel-2" class="myCarousel carousel slide">
 									<div class="carousel-inner">
-										<form action="{{url_for('updateBook')}}" class="form-stacked" method="POST">
+										<div class = "content">
+										<form action="{{url_for('updateBookRoute')}}" class="form-stacked" method="POST">
 											<input type="hidden" name="next" value="/">
 											<fieldset>
 												<div class="control-group">
 													<label class="control-label">Book ISBN</label>
 													<div class="controls">
-														<input type="text" placeholder="Enter book ISBN" id="username" class="input-xlarge" name="bookID">
+														<input type="number" placeholder="Enter book ISBN" id="username" class="input-xlarge" name="bookID" required>
 													</div>
 												</div>
-												<!-- <div class="control-group">
-													<label class="control-label">Book Title</label>
-													<div class="controls">
-														<input type="text" placeholder="Enter book title" id="username" class="input-xlarge" name="title">
-													</div>
-												</div> -->
-												<!-- <div class="control-group">
-													<label class="control-label">Genre</label>
-													<div class="controls">
-														<input type="text" placeholder="Enter book genre" id="username" class="input-xlarge" name="genre">
-													</div>
-												</div> -->
 												<div class="control-group">
 													<label class="control-label">Author First Name</label>
 													<div class="controls">
-														<input type="text" placeholder="Enter first name" id="username" class="input-xlarge" name="fname">
+														<input type="text" placeholder="Enter first name" id="username" class="input-xlarge" name="fname" required>
 													</div>
 												</div>
 												<div class="control-group">
 													<label class="control-label">Author Last Name</label>
 													<div class="controls">
-														<input type="text" placeholder="Enter last name" id="username" class="input-xlarge" name="lname">
+														<input type="text" placeholder="Enter last name" id="username" class="input-xlarge" name="lname" required>
 													</div>
 												</div>
 												<div class="control-group">
 													<label class="control-label">Publication country</label>
 													<div class="controls">
-														<input type="text" placeholder="Enter country" id="username" class="input-xlarge" name="country">
+														<input type="text" placeholder="Enter country" id="username" class="input-xlarge" name="country" required>
 													</div>
 												</div>
 												<div class="control-group">
 													<label class="control-label">Original Price</label>
 													<div class="controls">
-														<input type="text" placeholder="Enter book price" id="username" class="input-xlarge" name="price1">
+														<input type="number" placeholder="Enter book price" id="username" class="input-xlarge" name="price1" required>
 													</div>
 												</div>
 												<div class="control-group">
 													<label class="control-label">New Price</label>
 													<div class="controls">
-														<input type="text" placeholder="Enter book price" id="username" class="input-xlarge" name="price2">
+														<input type="number" placeholder="Enter book price" id="username" class="input-xlarge" name="price2" required>
 													</div>
 												</div>
 												<div class="control-group">
 													<input tabindex="3" class="btn btn-inverse large" type="submit" value="Update Book Price">
 												</div>
 											</fieldset>
-										</form>			
+										</form>
+									</div>			
 									</div>
 								</div>
 							</div>						
@@ -265,49 +222,32 @@
 								</h4>
 								<div id="myCarousel-2" class="myCarousel carousel slide">
 									<div class="carousel-inner">
-										<form action="{{url_for('deleteBook')}}" class="form-stacked" method="POST">
+										<div class = "content">
+										<form action="{{url_for('deleteBookRoute')}}" class="form-stacked" method="POST">
 											<input type="hidden" name="next" value="/">
 											<fieldset>
 												<div class="control-group">
 													<label class="control-label">Book ISBN</label>
 													<div class="controls">
-														<input type="text" placeholder="Enter book ISBN" id="username" class="input-xlarge" name="bookID">
+														<input type="number" placeholder="Enter book ISBN" id="username" class="input-xlarge" name="bookID" required>
 													</div>
-												</div>
-												<!-- <div class="control-group">
-													<label class="control-label">Book Title</label>
-													<div class="controls">
-														<input type="text" placeholder="Enter book title" id="username" class="input-xlarge" name="title">
-													</div>
-												</div> -->
-												<!-- <div class="control-group">
-													<label class="control-label">Genre</label>
-													<div class="controls">
-														<input type="text" placeholder="Enter book genre" id="username" class="input-xlarge" name="genre">
-													</div>
-												</div> -->
-												<!-- <div class="control-group">
-													<label class="control-label">Price</label>
-													<div class="controls">
-														<input type="text" placeholder="Enter book price" id="username" class="input-xlarge" name="price">
-													</div>
-												</div> -->
+												</div>												
 												<div class="control-group">
 													<label class="control-label">Author First Name</label>
 													<div class="controls">
-														<input type="text" placeholder="Enter first name" id="username" class="input-xlarge" name="fname">
+														<input type="text" placeholder="Enter first name" id="username" class="input-xlarge" name="fname" required>
 													</div>
 												</div>
 												<div class="control-group">
 													<label class="control-label">Author Last Name</label>
 													<div class="controls">
-														<input type="text" placeholder="Enter last name" id="username" class="input-xlarge" name="lname">
+														<input type="text" placeholder="Enter last name" id="username" class="input-xlarge" name="lname" required>
 													</div>
 												</div>
 												<div class="control-group">
 													<label class="control-label">Publication country</label>
 													<div class="controls">
-														<input type="text" placeholder="Enter the country" id="username" class="input-xlarge" name="country">
+														<input type="text" placeholder="Enter the country" id="username" class="input-xlarge" name="country" required>
 													</div>
 												</div>
 				
@@ -315,7 +255,8 @@
 													<input tabindex="3" class="btn btn-inverse large" type="submit" value="Delete Book">								
 												</div>
 											</fieldset>
-										</form>			
+										</form>	
+									</div>		
 									</div>							
 								</div>
 							</div>						
@@ -323,63 +264,23 @@
 					</div>				
 				</div>
 			</section>
-			<!-- <section class="our_client">
-				<h4 class="title"><span class="text">Developers</span></h4>
-				<div class="row">					
-					<div class="span3">
-						<a href="#"><img alt="" src="static/images/clients/14.png"></a>
-					</div>
-					<div class="span3">
-						<a href="#"><img alt="" src="static/images/clients/35.png"></a>
-					</div>
-					<div class="span3">
-						<a href="#"><img alt="" src="static/images/clients/1.png"></a>
-					</div>
-					<div class="span3">
-						<a href="#"><img alt="" src="static/images/clients/2.png"></a>
-					</div>
-				</div>
-			</section> -->
-
-			<!-- <section id="footer-bar">
-				<div class="row">
-					<div class="span3">
-						<h4>Navigation</h4>
-						<ul class="nav">
-							<li><a href="./index.html">Homepage</a></li>  
-							<li><a href="./about.html">About Us</a></li>
-							<li><a href="./contact.html">Contac Us</a></li>
-							<li><a href="./cart.html">Your Cart</a></li>
-							<li><a href="./register.html">Login</a></li>							
-						</ul>					
-					</div>
-					<div class="span4">
-						<h4>My Account</h4>
-						<ul class="nav">
-							<li><a href="#">My Account</a></li>
-							<li><a href="#">Order History</a></li>
-							<li><a href="#">Wish List</a></li>
-							<li><a href="#">Newsletter</a></li>
-						</ul>
-					</div>
-					<div class="span5">
-						<p class="logo"><img src="static/images/logo.png" class="site_logo" alt=""></p>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. the  Lorem Ipsum has been the industry's standard dummy text ever since the you.</p>
-						<br/>
-						<span class="social_icons">
-							<a class="facebook" href="#">Facebook</a>
-							<a class="twitter" href="#">Twitter</a>
-							<a class="skype" href="#">Skype</a>
-							<a class="vimeo" href="#">Vimeo</a>
-						</span>
-					</div>					
-				</div>	
-			</section> -->
 
 			<section id="copyright">
-				<!-- <span>Copyright 2013 bootstrappage template  All right reserved.</span> -->
+				
 			</section>
 		</div>
+		{% if response == 1 %}
+		<script>								
+			alert("Success");
+		</script>
+		{% endif %}
+
+		{% if response == 0 %}								
+		<script>								
+			alert("Failed");
+		</script>
+		{% endif %}
+
 		<script src="static/js/common.js"></script>
 		<script src="static/js/jquery.flexslider-min.js"></script>
 		<script type="text/javascript">

@@ -34,7 +34,7 @@
 				<div class="span8">
 					<div class="account pull-right">
 						<ul class="user-menu">	
-							<li><a href="./customerindex">Go Back</a></li>	
+							<li><a href="./adminindex">Go Back</a></li>	
 						</ul>
 					</div>
 				</div>
@@ -45,7 +45,6 @@
 				<div class="row">
 						<div class="span12">	
 						<h4 class="title"><span class="text"><strong>BOOK</strong> Details</span></h4>
-						
 						<div class="span5">
                             <address>
 								<h5><strong>Title:</strong> <span>{{ bookData[1] }}</span><br></h5>
@@ -58,28 +57,11 @@
                             <h4><strong>Price: Rs {{ bookData[3] }} /-</strong></h4>
 							</br>
                         </div>
-
-						<form action="{{url_for('buyBookRoute', bookID = bookData[0] ) }}" class="form-stacked" method="POST">
-							<fieldset>
-								<div class="control-group">
-									<label class="control-label">Quantity</label>
-									<div class="controls">
-										<input type="number" placeholder="1" id="password" class="input-xlarge" name="quantity">
-									</div>
-								</div>
-								<div class="control-group">
-									<input tabindex="3" class="btn btn-inverse large" type="submit" value="BUY NOW">
-									<hr>
-                                    <p class="reset" class="btn btn-inverse large"><a tabindex="4" href="./customerindex" title="cancel">Cancel Buy</a></p>
-								</div>
-							</fieldset>
-						</form>			
-					
 					</div>
 				</div>
-			</section>
+			</section>		
 			<section id="copyright">
-			</section>			
+			</section>	
 		</div>
 		<script src="static/js/common.js"></script>
 		<script>
