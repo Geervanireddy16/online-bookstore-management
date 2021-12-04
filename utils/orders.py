@@ -30,3 +30,20 @@ def orders(mysql,isbn,quantity,total,pay,userID):
     cur.close()
 
     return commitStatus
+
+
+def allorders(mysql,userID):
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT o.orderID,o.customerID,o.bookID,o.quantity,o.total,o.timestamp,b.title FROM Orders as o, Books as b  WHERE o.bookID = b.bookID ORDER BY orderID")
+    Data = list(cur.fetchall())
+    mysql.connection.commit()
+    cur.close()
+    return Data
+
+def myorder(mysql,userID):
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT o.bookID,o.quantity,o.total,o.timestamp,b.title FROM Orders as o,Books as b WHERE o.bookID = b.bookID AND o.customerID = %s",(userID,))
+    Data = list(cur.fetchall())
+    mysql.connection.commit()
+    cur.close()
+    return Data

@@ -27,6 +27,23 @@
 			<script src="js/respond.min.js"></script>
 		<![endif]-->
 	</head>
+	<style>
+        table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        }
+
+        tr:nth-child(even) {
+        background-color: #dddddd;
+        }
+        </style>
     <body>		
 		<div id="top-bar" class="container">
 			<div class="row">
@@ -64,7 +81,7 @@
 										<li><a href="./users">Customers</a></li>					
 									</ul>
 								</li>
-								<li><a href="./myorders">Orders</a></li>
+                                <li><a href="./myorders">Orders</a></li>
 								<li><a href="./myaccount">My Account</a></li>		
 							</ul>
 						</nav>
@@ -75,7 +92,7 @@
 							<ul>
 								<li><a href="./customerindex">Home</a></li>
 								<li><a href="./customersearch">Search Books</a></li>
-								
+                                <li><a href="./myorders">My Orders</a></li>
 								<li><a href="./myaccount">My Account</a></li>		
 							</ul>
 						</nav>
@@ -88,36 +105,72 @@
 				<div class="row">
 					<div class="span12">
 
+                        {% if accountType == "admin" %}
                         <!-- Admin Account -->
                         <div class="row">
                             <div class="span12">
                                 <h4 class="title">
-                                    <span class="pull-left"><span class="text"><span class="line"><strong>My Account</strong></span></span></span>
+                                    <span class="pull-left"><span class="text"><span class="line"><strong>INVENTORY</strong></span></span></span>
                                 </h4>
-
-                                <section class="header_text">
-                                    
-                                    <p><a href="#"><img src="static/images/usericon.jpg" alt="" width="70" height="70" /></a></p>
-
-                                    <p> NAME:- {{ Data[1]}} {{ Data[2]}} <br/>
-                                    USERNAME:- {{ Data[0] }} <br/>
-                                    ACCOUNT TYPE:- {{ accountType }} <br/>
-                                    EMAIL ID:- {{ Data[3] }} <br/>
-                                    PHONE NO:- {{ Data[5] }} <br/>
-                                    PASSWORD:- {{ Data[4] }} <br/>
-                                    </p>
-
-                                    {% if accountType == "customer" %}
-                                        <p> COUNTRY:- {{ Data[6]}} <br/>
-                                        STATE:- {{ Data[7] }} <br/>
-                                        PINCODE:- {{ Data[8]}} <br/>
-                                        ADDRESS:- {{ Data[9] }} <br/>
-                                        </p>
-                                    {% endif %}
-   
-                                </section>
+                                </br>
+                                    <table>
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Customer ID</th>
+                                            <th>Book ISBN</th>
+                                            <th>Book Title</th>
+                                            <th>Quantity</th>
+                                            <th>Total</th>
+                                            <th>Timestamp</th>
+                                        </tr>
+                                        {% for order in Data %}
+                                            <tr>
+                                                <td>{{ order[0] }}</td>
+                                                <td>{{ order[1] }}</td>
+                                                <td>{{ order[2] }}</td>
+                                                <td>{{ order[3] }}</td>
+                                                <td>{{ order[4] }}</td>
+                                                <td>{{ order[5] }}</td>
+                                                <td>{{ order[6] }}</td>
+                                            </tr> 
+                                        {% endfor %}
+                                      </table>
+                                      </br>
                             </div>						
                         </div>
+                        {% endif %}
+
+                        {% if accountType == "customer" %}
+                        <!-- Customer Account -->
+                        <div class="row">
+                            <div class="span12">
+                                <h4 class="title">
+                                    <span class="pull-left"><span class="text"><span class="line"><strong>INVENTORY</strong></span></span></span>
+                                </h4>
+                                </br>
+                                <table>
+                                    <tr>
+                                        <th>Book ISBN</th>
+                                        <th>Book Title</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                        <th>Timestamp</th>
+                                    </tr>
+                                    {% for order in Data %}
+                                        <tr>
+                                            <td>{{ order[0] }}</td>
+                                            <td>{{ order[4] }}</td>
+                                            <td>{{ order[1] }}</td>
+                                            <td>{{ order[2] }}</td>
+                                            <td>{{ order[3] }}</td>
+                                        </tr> 
+                                    {% endfor %}
+                                  </table>
+
+                                    </br>
+                            </div>						
+                        </div>
+                        {% endif %}
                         
 
 					</div>				

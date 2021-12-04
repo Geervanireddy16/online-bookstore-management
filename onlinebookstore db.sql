@@ -1,6 +1,7 @@
 create database onlinebookstore;
 use onlinebookstore;
 show tables;
+-- drop database onlinebookstore; 
 
 -- -----------------------------------------------------TABLES-----------------------------------------------------------------------------
 create table Customers(
@@ -228,6 +229,15 @@ SELECT * from Admins WHERE adminID = '';
 -- Display customer account
 SELECT * from Customers WHERE customerID = '';
 
+-- Display all orders in admins account
+Select o.orderID,o.customerID,o.bookID,b.title,o.quantity,o.total,o.timestamp
+FROM Orders as o, Books as b 
+WHERE o.bookID = b.bookID ORDER BY orderID;
+
+-- Display orders by userID
+Select o.bookID,b.title,o.quantity,o.total,o.timestamp
+FROM Orders as o,Books as b
+WHERE o.bookID = b.bookID AND o.customerID = 'geervaniii';
 -- -----------------------------------------------------INSERT -----------------------------------------------------------------------------
 
 -- Register Customers
@@ -283,4 +293,25 @@ DELETE FROM Inventory WHERE bookID = '';
 -- Delete books from Books table
 DELETE FROM Books WHERE bookID = '';
 
--- ----------------------------------------------------- -----------------------------------------------------------------------------
+-- ----------------------------------------------------- TRANSACTION -----------------------------------------------------------------------------
+call temp()
+
+DELIMITER $$
+create PROCEDURE temp()
+BEGIN
+	DECLARE _rollback BOOL default 0;
+    DECLARE CONTINUE HANDLER FOR 1051 SET _rollback=1;
+    DECLARE CONTINUE HANDLER FOR 1048 SET _rollback=1;
+    DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET _rollback=1;
+	START TRANSACTION;
+		INSERT into Orders(customerID,bookID,quantity,total,timestamp) values('','','','','');
+        UPDATE Inventory set soldStock = soldStock + '' where bookID = '';
+        UPDATE Inventory set totalStock = totalStock + '' where bookID = '';
+        INSERT into Payment(customerID,paymentInfo) values ('',''); --  throws error if pyamentInfo is incorrect
+		if _rollback = 1 then
+			rollback;
+		else
+			commit;
+		end if;
+END $$
+DELIMITER ;

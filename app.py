@@ -5,6 +5,13 @@ from os import getenv
 from dotenv import load_dotenv
 
 
+from utils.home import *
+from utils.loginregister import *
+from utils.book import *
+from utils.search import *
+from utils.user import *
+from utils.orders import *
+
 load_dotenv()
 mysql_host = getenv('MYSQL_HOST',None)
 mysql_user = getenv('MYSQL_USER',None)
@@ -20,13 +27,6 @@ app.config['MYSQL_DB'] = mysql_db
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # all the session data is encrypted in the server so we need a secret key to encrypt and decrypt the data
 
-
-from utils.home import *
-from utils.loginregister import *
-from utils.book import *
-from utils.search import *
-from utils.user import *
-from utils.orders import *
 
 mysql = MySQL(app)
 
@@ -257,19 +257,23 @@ def buyBookRoute(bookID):
         
     return "USE POST METHOD ONLY"
     
+# pay order route
 @app.route("/pay<isbn>/<quantity>/<total>",methods=["POST","GET"])
 def payRoute(isbn,quantity,total):
     if request.method =="POST":
         pay = str(request.form.get("pay"))
 
         response = orders(mysql,isbn,quantity,total,pay,session["userID"])
-        
-        if response == 1:
-            return "Success"
-        else:
-            return "Fail"
+        return redirect(url_for('orderconfirmationRoute',response = response))
+        # return render_template("orderconfirmation.html",response=response)
 
     return "USE POST METHOD ONLY"
+
+# order confirmation route
+@app.route("/orderconfirmation<response>",methods=["POST","GET"])
+def orderconfirmationRoute(response):
+    return render_template("orderconfirmation.html",response=response)
+
 
 # display users route
 @app.route("/users",methods=["POST","GET"])
@@ -277,6 +281,25 @@ def usersRoute():
     adminData = admin(mysql)
     customerData = customers(mysql)
     return render_template("users.html",adminData=adminData,customerData=customerData)
+
+# display  orders in customers and admins account account
+@app.route("/myorders",methods=["POST","GET"])
+def ordersRoute():
+    userID = session["userID"]
+    accountType = session["accountType"]
+
+    if session["accountType"] == None or session["userID"]== None:
+        return "ERROR"
+
+    if session["accountType"]=="admin":
+        Data = allorders(mysql,userID)
+        return render_template("myorders.html",Data=Data,accountType=accountType)
+
+    if session["accountType"]=="customer":
+        Data = myorder(mysql,userID)
+        return render_template("myorders.html",Data=Data,accountType=accountType)
+    
+    return "ERROR"
 
 # display logged in users account
 @app.route("/myaccount",methods=["POST","GET"])
@@ -310,7 +333,7 @@ def contactUsRoute():
         if response == 1:
             return "Message Submitted"
         else:
-            print("Failed to add message")
+            return "Failed to add message"
             
     return "Use POST METHOD ONLY"
 

@@ -33,7 +33,7 @@
 		<div id="top-bar" class="container">
 			<div class="row">
 				<div class="span4">
-					<a href="/customerindex" class="logo pull-left"><img src="static/images/websitelogo.png" class="site_logo" alt=""></a>
+					<a href="/" class="logo pull-left"><img src="static/images/websitelogo.png" class="site_logo" alt=""></a>
 				</div>
 				<div class="span8">
 					<div class="account pull-right">
@@ -52,6 +52,7 @@
 						<ul>
 							<li><a href="./customerindex">Home</a></li>
 							<li><a href="./customersearch">Search Books</a></li>
+							<li><a href="./myorders">My Orders</a></li>
 							<li><a href="./myaccount">My Account</a></li>		
 						</ul>
 					</nav>
@@ -66,14 +67,15 @@
 						<li>
 							<img src="static/images/carousel/carousel1.jpg" alt="" />
 						</li>
-						<!-- <li>
-							<img src="static/images/carousel/banner2.jpg" alt="" />
-							 <div class="intro">
-								<h1>Mid season sale</h1>
-								<p><span>Up to 50% Off</span></p>
-								<p><span>On selected items online and in stores</span></p>
-							</div>
-						</li> -->
+						<li>
+							<img src="static/images/carousel/carousel2.jpg" alt="" />
+						</li>
+						<li>
+							<img src="static/images/carousel/Carousel3.jpg" alt="" />
+						</li>
+						<li>
+							<img src="static/images/carousel/Carousel4.jpg" alt="" />
+						</li>
 					</ul>
 				</div>			
 			</section>
@@ -269,10 +271,9 @@
 			</section>
 
 			<section id="footer-bar">
-				<!-- <section class="main-content">				 -->
 					<div class="row">
 						<div class="span3">	
-							<h3 class="title"><span><strong>CONTACT US</strong></span></h3>				
+							<h3 class="contact"><span><strong>CONTACT US</strong></span></h3>				
 							<form action="{{url_for('contactUsRoute')}}" class="form-stacked" method="POST">
 								<input type="hidden" name="next" value="/">
 								<fieldset>
@@ -295,9 +296,10 @@
 										</div>
 									</div>
 									<div class="control-group">
-										<label class="control-label">Message</label>
+										<label class="control-label">Message Us</label>
 										<div class="controls">
-											<input type="text" placeholder="Write your message..." id="username" class="input-xlarge" name="message">
+											<textarea id="subject" name="subject" placeholder="Write something..." style="height:200px;width:336px" name = "message"></textarea>
+											<!-- <input type="text" placeholder="Write your message..." id="username" class="input-xlarge" name="message"> -->
 										</div>
 									</div>
 									<div class="control-group">
@@ -307,12 +309,13 @@
 							</form>				
 						</div>
 					</div>
-				<!-- </section> -->
 			</section>
 			<section id="copyright">
 				<!-- <span>Copyright 2013 bootstrappage template  All right reserved.</span> -->
 			</section>
 		</div>
+
+
 		<script src="static/js/common.js"></script>
 		<script src="static/js/jquery.flexslider-min.js"></script>
 		<script type="text/javascript">
@@ -329,5 +332,10 @@
 				});
 			});
 		</script>
+		<style>
+			.contact{
+				color:#eb4800
+			}
+		</style>
     </body>
 </html>
