@@ -1,7 +1,7 @@
 # Online BookStore Management Application
 An application with two portals - admin and customer. 
 
-Admins can add book ,delete book and update book. Admins can view the book Invetory(total and sold book stocks), all accounts and orders placed by customers in the application.
+Admins can add book ,delete book and update book. Admins can view the book Inventory(total and sold book stocks), all accounts and orders placed by customers in the application.
 
 Customers can buy only one book at a time and with a quantity of 1 to 5 only. Customers have to register to purchase/view more books.
 
@@ -26,10 +26,14 @@ They can search a book by title, genre or author name.
 
 ## Website Preview
 ### Admin Portal Preview
-![Demo](https://user-images.githubusercontent.com/63465293/144717705-0444def6-41dc-4d17-ba48-0ac1ac2811a7.mp4)
+<p align="center">
+  ![Click Here](https://user-images.githubusercontent.com/63465293/144717705-0444def6-41dc-4d17-ba48-0ac1ac2811a7.mp4)
+</p>
 
 ### Customer Portal Preview
-![Demo](https://user-images.githubusercontent.com/63465293/144717576-540e6beb-c630-4971-b98c-1bb670d7ad3b.mp4)
+<p align="center">
+  ![Click Here](https://user-images.githubusercontent.com/63465293/144717576-540e6beb-c630-4971-b98c-1bb670d7ad3b.mp4)
+</p>
 
 ## Folder Structure
     .

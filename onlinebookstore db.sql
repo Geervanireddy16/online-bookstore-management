@@ -104,6 +104,7 @@ alter table Payment add foreign key (customerID) references Customers(customerID
 insert into Admins(adminID,firstName,lastName,emailID,password,phone) values('admin1','Sam','Jones','sam@gmail.com','abc123',1234567892);
 insert into Admins(adminID,firstName,lastName,emailID,password,phone) values('admin2','Anu','Sharma','anu@gmail.com','abc1',3454567892);
  
+ 
  -- Authors
 insert into Authors(firstName,lastName) values('Robert','Stevenson');
 insert into Authors(firstName,lastName) values('Jon','Krakauer');
@@ -134,19 +135,19 @@ insert into Books(bookID,authorID,publisherID,title,genre,publicationYear,price)
 insert into Books(bookID,authorID,publisherID,title,genre,publicationYear,price) values(13,501,7002,'Into Thin Air','Adventure',1964,568);
 
 -- Inventory
-insert into Inventory (bookID,totalStock,soldStock) values (1,900,100);
-insert into Inventory (bookID,totalStock,soldStock) values (2,1000,0);
-insert into Inventory (bookID,totalStock,soldStock) values (3,1000,0);
-insert into Inventory (bookID,totalStock,soldStock) values (4,500,0);
-insert into Inventory (bookID,totalStock,soldStock) values (5,200,0);
+insert into Inventory (bookID,totalStock,soldStock) values (1,100,0);
+insert into Inventory (bookID,totalStock,soldStock) values (2,100,0);
+insert into Inventory (bookID,totalStock,soldStock) values (3,100,0);
+insert into Inventory (bookID,totalStock,soldStock) values (4,100,0);
+insert into Inventory (bookID,totalStock,soldStock) values (5,100,0);
 insert into Inventory (bookID,totalStock,soldStock) values (6,100,0);
-insert into Inventory (bookID,totalStock,soldStock) values (7,48,2);
-insert into Inventory (bookID,totalStock,soldStock) values (8,85,15);
-insert into Inventory (bookID,totalStock,soldStock) values (9,50,0);
-insert into Inventory (bookID,totalStock,soldStock) values (10,30,4);
+insert into Inventory (bookID,totalStock,soldStock) values (7,100,0);
+insert into Inventory (bookID,totalStock,soldStock) values (8,100,0);
+insert into Inventory (bookID,totalStock,soldStock) values (9,100,0);
+insert into Inventory (bookID,totalStock,soldStock) values (10,100,0);
 insert into Inventory (bookID,totalStock,soldStock) values (11,100,0);
-insert into Inventory (bookID,totalStock,soldStock) values (12,16,30);
-insert into Inventory (bookID,totalStock,soldStock) values (13,20,400);
+insert into Inventory (bookID,totalStock,soldStock) values (12,100,0);
+insert into Inventory (bookID,totalStock,soldStock) values (13,100,0);
 
 -- -----------------------------------------------------SELECT -----------------------------------------------------------------------------
 select * from Admins;

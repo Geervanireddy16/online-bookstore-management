@@ -31,7 +31,7 @@ def orders(mysql,isbn,quantity,total,pay,userID):
 
     return commitStatus
 
-
+# function to display all orders to admin portal
 def allorders(mysql,userID):
     cur = mysql.connection.cursor()
     cur.execute("SELECT o.orderID,o.customerID,o.bookID,o.quantity,o.total,o.timestamp,b.title FROM Orders as o, Books as b  WHERE o.bookID = b.bookID ORDER BY orderID")
@@ -40,6 +40,7 @@ def allorders(mysql,userID):
     cur.close()
     return Data
 
+# function to display customers orders
 def myorder(mysql,userID):
     cur = mysql.connection.cursor()
     cur.execute("SELECT o.bookID,o.quantity,o.total,o.timestamp,b.title FROM Orders as o,Books as b WHERE o.bookID = b.bookID AND o.customerID = %s",(userID,))
