@@ -8,7 +8,7 @@ Customers can buy only one book at a time and with a quantity of 1 to 5 only. Cu
 Customers and admin have a home page where all books by genre is displayed and details of book will be displayed on clicking a particular book.
 They can search a book by title, genre or author name.
 
-
+ 
 ## Technology Stack
 * **Frontend:** [HTML](https://html.com/), [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS), [Bootstrap](https://getbootstrap.com/), [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * **Backend:** [Python Flask](https://flask.palletsprojects.com/en/2.0.x/)
