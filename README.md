@@ -25,15 +25,12 @@ They can search a book by title, genre or author name.
     4. pip install mysql-connector
 
 ## Website Preview
+## Website Preview
 ### Admin Portal Preview
-<p align="center">
-  ![Click Here](https://user-images.githubusercontent.com/63465293/144717705-0444def6-41dc-4d17-ba48-0ac1ac2811a7.mp4)
-</p>
+  [!Demo](https://user-images.githubusercontent.com/63465293/144717705-0444def6-41dc-4d17-ba48-0ac1ac2811a7.mp4)
 
 ### Customer Portal Preview
-<p align="center">
-  ![Click Here](https://user-images.githubusercontent.com/63465293/144717576-540e6beb-c630-4971-b98c-1bb670d7ad3b.mp4)
-</p>
+  [!Demo](https://user-images.githubusercontent.com/63465293/144717576-540e6beb-c630-4971-b98c-1bb670d7ad3b.mp4)
 
 ## Folder Structure
     .
