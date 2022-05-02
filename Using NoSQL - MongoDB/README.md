@@ -12,7 +12,7 @@ They can search a book by title, genre or author name.
 ## Technology Stack
 * **Frontend:** [HTML](https://html.com/), [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS), [Bootstrap](https://getbootstrap.com/), [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * **Backend:** [Python Flask](https://flask.palletsprojects.com/en/2.0.x/)
-* **Database:** [MongoDB]](https://www.mongodb.com/atlas/database)
+* **Database:** [MongoDB](https://www.mongodb.com/atlas/database)
 
 ## Requirements
 * [Visual Studio Code](https://code.visualstudio.com/)
@@ -76,6 +76,7 @@ For our application, we have created 2 triggers which is enabled as soon as a do
       return doc;
     };
     ```
+
 5. Function code for *DcrTotalStock* Trigger
   ```bash
     exports = function(changeEvent) {
@@ -99,20 +100,24 @@ For our application, we have created 2 triggers which is enabled as soon as a do
   ```bash
     pip install gunicorn
     ```
+
 2. Generate requirements file
   ```bash
   pip freeze > requirements.txt
    ```
+
 3. Create a Procfile
   ```bash
     web: gunicorn app:app
     ```
+
   >Note : *web* is used by Heroku to start a web server for our application. The *app:app* specifies the module and application name. In our application we have the app module and our flask application is also called app.
 
 4. Heroku Login
   ```bash
     heroku login
     ```
+    
 5. Create a git repository
   ```bash
     git init

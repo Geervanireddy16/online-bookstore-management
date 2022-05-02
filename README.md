@@ -16,7 +16,7 @@ Using MySQL and MongoDB are two separate projects
 * **Backend:** [Python Flask](https://flask.palletsprojects.com/en/2.0.x/)
 * **Database:** 
   1. [MySQL](https://www.mysql.com/) 
-  2. [MongoDB]](https://www.mongodb.com/atlas/database)
+  2. [MongoDB](https://www.mongodb.com/atlas/database)
 
 
 ## Website Preview
