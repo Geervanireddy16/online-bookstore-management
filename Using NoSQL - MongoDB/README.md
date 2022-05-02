@@ -74,7 +74,8 @@ For our application, we have created 2 triggers which is enabled as soon as a do
           {"$inc": {"soldStock": quantity}}
         );
         return doc;
-      };```
+      };
+```
 
 5. Function code for *DcrTotalStock* Trigger
   ```bash
