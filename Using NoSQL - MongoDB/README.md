@@ -115,14 +115,12 @@ For our application, we have created 2 triggers which is enabled as soon as a do
 
 4. Heroku Login
   ```bash
-    heroku login
-    ```
-    
+    heroku login```
+
 5. Create a git repository
   ```bash
     git init
-    heroku git:remote -a onlinebookstoree
-    ```
+    heroku git:remote -a onlinebookstoree```
 
   >Note: For existing git repository use *heroku git:remote -a onlinebookstoree*
 
@@ -130,5 +128,4 @@ For our application, we have created 2 triggers which is enabled as soon as a do
   ```bash
     git add .
     git commit -m “message”
-    git push heroku main
-    ```
+    git push heroku main```
