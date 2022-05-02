@@ -57,7 +57,7 @@ For our application, we have created 2 triggers which is enabled as soon as a do
         const quantity = fullDocument.quantity;
         const book_collection = context.services.get("Cluster0").db("bookstore").collection("books");
         
-        const doc = book_collection.updateOne(           //if operation type is 'insert' increment post count by 1
+        const doc = book_collection.updateOne(           
           {bookID: bookID},
           {"$inc": {"soldStock": quantity}}
         );
@@ -73,7 +73,7 @@ For our application, we have created 2 triggers which is enabled as soon as a do
       const quantity = fullDocument.quantity;
       const book_collection = context.services.get("Cluster0").db("bookstore").collection("books");
       
-      const doc = book_collection.updateOne(           //if operation type is 'insert' increment post count by 1
+      const doc = book_collection.updateOne(          
         {"bookID": bookID},
         {"$inc": {"totalStock": -quantity}}
       );
@@ -100,7 +100,10 @@ For our application, we have created 2 triggers which is enabled as soon as a do
   ```
 >Note : *web* is used by Heroku to start a web server for our application. The *app:app* specifies the module and application name. In our application we have the app module and our flask application is also called app.
 
-5. Heroku Login
+5. Heroku Login (in browser) and create an app
+>Note: *onlinebookstoree* is the name of our app
+
+6. Heroku Login (in terminal)
   ```bash
     heroku login
   ```
