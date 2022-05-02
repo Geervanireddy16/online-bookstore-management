@@ -31,7 +31,7 @@ They can search a book by title, genre or author name.
 ### Customer Portal Preview
   [!Demo](https://user-images.githubusercontent.com/63465293/144717576-540e6beb-c630-4971-b98c-1bb670d7ad3b.mp4)
 
-## Folder Structure
+## Project Structure
     .
     ├── static          
     |   └── bootstrap
