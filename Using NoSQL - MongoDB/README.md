@@ -1,5 +1,5 @@
 # Online BookStore Management Application
-To open app [click here.](https://onlinebookstoree.herokuapp.com/)
+To open deployed app [click here.](https://onlinebookstoree.herokuapp.com/)
  
 ## Technology Stack
 * **Frontend:** [HTML](https://html.com/), [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS), [Bootstrap](https://getbootstrap.com/), [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
