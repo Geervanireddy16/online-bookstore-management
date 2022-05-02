@@ -63,19 +63,19 @@ For our application, we have created 2 triggers which is enabled as soon as a do
 3. In Trigger source details, type the cluster name, database name, collection name (for our application its *orders*) and operation type is insert. Enable full document.
 4. Function code for *IncSoldStock* Trigger
   ```bash
-    exports = function(changeEvent) {
-      const fullDocument = changeEvent.fullDocument;
-      const bookID = fullDocument.bookID;
-      const quantity = fullDocument.quantity;
-      const book_collection = context.services.get("Cluster0").db("bookstore").collection("books");
-      
-      const doc = book_collection.updateOne(           //if operation type is 'insert' increment post count by 1
-        {bookID: bookID},
-        {"$inc": {"soldStock": quantity}}
-      );
-      return doc;
-    };
-    ```
+      exports = function(changeEvent) {
+        const fullDocument = changeEvent.fullDocument;
+        const bookID = fullDocument.bookID;
+        const quantity = fullDocument.quantity;
+        const book_collection = context.services.get("Cluster0").db("bookstore").collection("books");
+        
+        const doc = book_collection.updateOne(           //if operation type is 'insert' increment post count by 1
+          {bookID: bookID},
+          {"$inc": {"soldStock": quantity}}
+        );
+        return doc;
+      };
+      ```
 
 5. Function code for *DcrTotalStock* Trigger
   ```bash
@@ -115,12 +115,14 @@ For our application, we have created 2 triggers which is enabled as soon as a do
 
 4. Heroku Login
   ```bash
-    heroku login```
-
+    heroku login
+    ```
+    
 5. Create a git repository
   ```bash
     git init
-    heroku git:remote -a onlinebookstoree```
+    heroku git:remote -a onlinebookstoree
+    ```
 
   >Note: For existing git repository use *heroku git:remote -a onlinebookstoree*
 
@@ -128,4 +130,5 @@ For our application, we have created 2 triggers which is enabled as soon as a do
   ```bash
     git add .
     git commit -m “message”
-    git push heroku main```
+    git push heroku main
+    ```
