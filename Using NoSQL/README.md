@@ -25,7 +25,6 @@ They can search a book by title, genre or author name.
     4. pip install mysql-connector
 
 ## Website Preview
-## Website Preview
 ### Admin Portal Preview
   [!Demo](https://user-images.githubusercontent.com/63465293/144717705-0444def6-41dc-4d17-ba48-0ac1ac2811a7.mp4)
 
