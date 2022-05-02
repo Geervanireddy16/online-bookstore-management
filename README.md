@@ -47,3 +47,5 @@ They can search a book by title, genre or author name.
     ├── LICENSE
     └── README.md
 
+## Extended Entity Diagram
+![Screenshot](./static/images/EERDiagram.png)
