@@ -1,13 +1,5 @@
 # Online BookStore Management Application
-An application with two portals - admin and customer. 
-
-Admins can add book ,delete book and update book. Admins can view the book Inventory(total and sold book stocks), all accounts and orders placed by customers in the application.
-
-Customers can buy only one book at a time and with a quantity of 1 to 5 only. Customers have to register to purchase/view more books.
-
-Customers and admin have a home page where all books by genre is displayed and details of book will be displayed on clicking a particular book.
-They can search a book by title, genre or author name.
-
+To open app [click here.](https://onlinebookstoree.herokuapp.com/)
  
 ## Technology Stack
 * **Frontend:** [HTML](https://html.com/), [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS), [Bootstrap](https://getbootstrap.com/), [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
@@ -26,11 +18,7 @@ They can search a book by title, genre or author name.
 * [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli)
 
 ## Website Preview
-### Admin Portal Preview
-  [!Demo](https://user-images.githubusercontent.com/63465293/144717705-0444def6-41dc-4d17-ba48-0ac1ac2811a7.mp4)
-
-### Customer Portal Preview
-  [!Demo](https://user-images.githubusercontent.com/63465293/144717576-540e6beb-c630-4971-b98c-1bb670d7ad3b.mp4)
+[Click here](https://github.com/Geervanireddy16/online-bookstore-management/blob/main/README.md)
 
 ## Project Structure
     .

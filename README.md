@@ -8,7 +8,7 @@ Customers can buy only one book at a time and with a quantity of 1 to 5 only. Cu
 Customers and admin have a home page where all books by genre is displayed and details of book will be displayed on clicking a particular book.
 They can search a book by title, genre or author name.
 
-Using MySQL and MongoDB are two separate projects
+**Using MySQL and MongoDB are two separate projects**
 
  
 ## Technology Stack
