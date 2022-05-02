@@ -91,7 +91,7 @@ For our application, we have created 2 triggers which is enabled as soon as a do
       );
       return doc;
     };
-    ```
+```
 
 
 ## Steps to deploy our application on Heroku
@@ -99,30 +99,30 @@ For our application, we have created 2 triggers which is enabled as soon as a do
 * Install gunicorn (Ignore if previously installed)
   ```bash
     pip install gunicorn
-    ```
+```
 
 2. Generate requirements file
   ```bash
   pip freeze > requirements.txt
-   ```
+```
 
 3. Create a Procfile
   ```bash
     web: gunicorn app:app
-    ```
+```
 
   >Note : *web* is used by Heroku to start a web server for our application. The *app:app* specifies the module and application name. In our application we have the app module and our flask application is also called app.
 
 4. Heroku Login
   ```bash
     heroku login
-    ```
+```
     
 5. Create a git repository
   ```bash
     git init
     heroku git:remote -a onlinebookstoree
-    ```
+```
 
   >Note: For existing git repository use *heroku git:remote -a onlinebookstoree*
 
@@ -131,4 +131,4 @@ For our application, we have created 2 triggers which is enabled as soon as a do
     git add .
     git commit -m “message”
     git push heroku main
-    ```
+```
