@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Daily Dose of Reading</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- bootstrap -->
+		<link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">      
+		<link href="static/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">		
+		<link href="static/css/bootstrappage.css" rel="stylesheet"/>
+		
+		<!-- global styles -->
+		<link href="static/css/flexslider.css" rel="stylesheet"/>
+		<link href="static/css/main.css" rel="stylesheet"/>
+
+		<!-- scripts -->
+		<script src="static/js/jquery-1.7.2.min.js"></script>
+		<script src="static/bootstrap/js/bootstrap.min.js"></script>				
+		<script src="static/js/superfish.js"></script>	
+		<script src="static/js/jquery.scrolltotop.js"></script>
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+    <body>		
+		<div id="top-bar" class="container">
+			<div class="row">
+				<div class="span4">
+					<a href="/" class="logo pull-left"><img src="static/images/websitelogo.png" class="site_logo" alt=""></a>
+				</div>
+				<div class="span8">
+					<div class="account pull-right">
+						<ul class="user-menu">				
+							<li><a href="/">Go Back</a></li>
+							<li><a href="/login">Login</a></li>		
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="wrapper" class="container">			
+			<section class="main-content">				
+				<div class="row"> 
+					<div class="span12">					
+						<h4 class="title"><span class="text"><strong>Register</strong> Form</span></h4>
+						<div class = "content">
+						<form action="{{url_for('registerRoute')}}" method="POST" class="form-stacked" id="register">
+							<fieldset>
+								<div class="control-group">
+									<label class="control-label">Username</label>
+									<div class="controls">
+										<input type="text" placeholder="Enter your username" class="input-xlarge" name="username" required = "required">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">Email address:</label>
+									<div class="controls">
+										<input type="email" placeholder="Enter your email" class="input-xlarge" name="email" required = "required">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">Password:</label>
+									<div class="controls">
+										<input type="password" placeholder="Enter your password" class="input-xlarge" name="password" required = "required" minlength = "8">
+									</div>
+								</div>	
+								<div class="control-group">
+									<label class="control-label">First Name</label>
+									<div class="controls">
+										<input type="text" placeholder="Enter your first name" class="input-xlarge" name="fname" required = "required">
+									</div>
+								</div>	
+								<div class="control-group">
+									<label class="control-label">Last Name</label>
+									<div class="controls">
+										<input type="text" placeholder="Enter your last name" class="input-xlarge" name="lname" required = "required">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">Phone Number</label>
+									<div class="controls">
+										<input type="number" placeholder="Enter your phone number" class="input-xlarge" name="phone" required = "required">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">State</label>
+									<div class="controls">
+										<input type="text" placeholder="Enter your state" class="input-xlarge" name="state" required = "required">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">Pincode</label>
+									<div class="controls">
+										<input type="number" placeholder="Enter your pincode" class="input-xlarge" name="pincode" required = "required">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">Address</label>
+									<div class="controls">
+										<input type="text" placeholder="Enter your address" class="input-xlarge" name="address" required = "required">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">Country</label>
+									<div class="controls">
+										<input type="text" placeholder="Enter your country" class="input-xlarge" name="country" required = "required">
+									</div>
+								</div>
+
+								<div class="actions"><input tabindex="9" class="btn btn-inverse large" type="submit" value="Create your account"></div>
+
+							</fieldset>
+						</form>
+					</div>					
+					</div>				
+				</div>
+			</section>	
+		</div>
+		{% if response == 1 %}
+		<script>								
+			alert("Registration successful");
+		</script>
+		{% endif %}
+
+		{% if response == 0 %}								
+		<script>								
+			alert("Registration Failed");
+		</script>
+		{% endif %}
+	
+    </body>
+</html>

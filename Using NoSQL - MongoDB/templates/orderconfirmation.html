@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Daily Dose of Reading</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- bootstrap -->
+		<link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">      
+		<link href="static/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">		
+		<link href="static/css/bootstrappage.css" rel="stylesheet"/>
+		
+		<!-- global styles -->
+		<link href="static/css/flexslider.css" rel="stylesheet"/>
+		<link href="static/css/main.css" rel="stylesheet"/>
+
+		<!-- scripts -->
+		<script src="static/js/jquery-1.7.2.min.js"></script>
+		<script src="static/bootstrap/js/bootstrap.min.js"></script>				
+		<script src="static/js/superfish.js"></script>	
+		<script src="static/js/jquery.scrolltotop.js"></script>
+		<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+    <body>		
+		<div id="top-bar" class="container">
+			<div class="row">
+				<div class="span4">
+					<a href="./customerindex" class="logo pull-left"><img src="static/images/websitelogo.png" class="site_logo" alt=""></a>
+				</div>
+				<div class="span8">
+					<div class="account pull-right">
+						<ul class="user-menu">	
+							<li><a href="./customerindex">Go Back</a></li>					
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="wrapper" class="container">
+			<section class="main-content">				
+				<div class="row">
+					<div class="span12">	
+						<section class="main-content">				
+							<div class="row">
+									<div class="span12">	
+									<h4 class="title"><span class="text"><strong>Order</strong> Confirmation</span></h4>
+									{% if response == "1" %}
+										<p>
+											Your order has been placed <strong>successfully</strong>
+										</p>
+									{% endif %}
+			
+									{% if response == "0" %}
+										<p>
+											Your order has been <strong>failed</strong>! Please try again
+										</p>
+									{% endif %}
+							</div>
+						</section>				
+					</div>
+				</div>
+			</section>
+			<section id="copyright">
+			</section>
+			</div>
+    </body>
+</html>

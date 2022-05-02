@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Daily Dose of Reading</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- bootstrap -->
+		<link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">      
+		<link href="static/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+		
+		<link href="static/css/bootstrappage.css" rel="stylesheet"/>
+		
+		<!-- global styles -->
+		<link href="static/css/flexslider.css" rel="stylesheet"/>
+		<link href="static/css/main.css" rel="stylesheet"/>
+
+		<!-- scripts -->
+		<script src="static/js/jquery-1.7.2.min.js"></script>
+		<script src="static/bootstrap/js/bootstrap.min.js"></script>				
+		<script src="static/js/superfish.js"></script>	
+		<script src="static/js/jquery.scrolltotop.js"></script>
+		<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+    <body>		
+		<div id="top-bar" class="container">
+			<div class="row">
+				<div class="span4">
+					<a href="./adminindex" class="logo pull-left"><img src="static/images/websitelogo.png" class="site_logo" alt=""></a>
+				</div>
+				<div class="span8">
+					<div class="account pull-right">
+						<ul class="user-menu">				
+							<li><a href="./logout">Logout</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="wrapper" class="container">
+			<section class="navbar main-menu">
+				<div class="navbar-inner main-menu">				
+					<nav id="menu" class="pull-right">
+						<ul>
+							<li><a href="./adminindex">Home</a></li>
+							<li><a href="./search">Search Books</a></li>
+							<li><a href="./books" method="POST">Books</a>					
+								<ul>
+									<li><a href="./books">Add</a></li>									
+									<li><a href="./books">Update</a></li>
+									<li><a href="./books">Delete</a></li>			
+								</ul>
+							</li>
+							<li><a href="./inventory">Inventory</a></li>	
+							<li><a href="./users">Users</a>					
+								<ul>
+									<li><a href="./users">Admins</a></li>									
+									<li><a href="./users">Customers</a></li>					
+								</ul>
+							</li>
+							<li><a href="./myorders">Orders</a></li>
+							<li><a href="./myaccount">My Account</a></li>		
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+			<section class="main-content">
+				<div class="row">
+					<div class="span12">
+
+						<!-- Add Books -->
+						<div class="row">
+							<div class="span12">
+								<h4 class="title">
+									<span class="pull-left"><span class="text"><span class="line"><strong>ADD </strong>BOOK</span></span></span>
+								</h4>
+								<div id="myCarousel-2" class="myCarousel carousel slide">
+									<div class="carousel-inner">
+										<div class = "content">
+										<form action="{{url_for('addBookRoute')}}" class="form-stacked" method="POST">
+											<input type="hidden" name="next" value="/">
+											<fieldset>
+												<div class="control-group">
+													<label class="control-label">Book ISBN</label>
+													<div class="controls">
+														<input type="number" placeholder="Enter book ISBN" id="username" class="input-xlarge" name="bookID" required>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">Book Title</label>
+													<div class="controls">
+														<input type="text" placeholder="Enter book title" id="username" class="input-xlarge" name="title" required>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">Genre</label>
+													<div class="controls">
+														<input type="text" placeholder="Enter book genre" id="username" class="input-xlarge" name="genre" required>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">Price</label>
+													<div class="controls">
+														<input type="number" placeholder="Enter book price" id="username" class="input-xlarge" name="price" required>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">Author First Name</label>
+													<div class="controls">
+														<input type="text" placeholder="Enter first name" id="username" class="input-xlarge" name="fname" required>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">Author Last Name</label>
+													<div class="controls">
+														<input type="text" placeholder="Enter last name" id="username" class="input-xlarge" name="lname" required>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">Publication year</label>
+													<div class="controls">
+														<input type="number" placeholder="Enter the year" id="username" class="input-xlarge" name="year" required>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">Publication country</label>
+													<div class="controls">
+														<input type="text" placeholder="Enter the country" id="username" class="input-xlarge" name="country" required>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">Stock</label>
+													<div class="controls">
+														<input type="number" placeholder="Enter the stock of book" id="username" class="input-xlarge" name="stock" required>
+													</div>
+												</div>
+				
+												<div class="control-group">
+													<input tabindex="3" class="btn btn-inverse large" type="submit" value="Add Book">
+												</div>
+											</fieldset>
+										</form>	
+									</div>		
+									</div>							
+								</div>
+							</div>						
+						</div>
+
+
+						<!-- Update Book -->
+						<div class="row">
+							<div class="span12">
+								<h4 class="title">
+									<span class="pull-left"><span class="text"><span class="line"><strong>UPDATE </strong>BOOK Price</span></span></span>
+								</h4>
+								<div id="myCarousel-2" class="myCarousel carousel slide">
+									<div class="carousel-inner">
+										<div class = "content">
+										<form action="{{url_for('updateBookRoute')}}" class="form-stacked" method="POST">
+											<input type="hidden" name="next" value="/">
+											<fieldset>
+												<div class="control-group">
+													<label class="control-label">Book ISBN</label>
+													<div class="controls">
+														<input type="number" placeholder="Enter book ISBN" id="username" class="input-xlarge" name="bookID" required>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">Author First Name</label>
+													<div class="controls">
+														<input type="text" placeholder="Enter first name" id="username" class="input-xlarge" name="fname" required>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">Author Last Name</label>
+													<div class="controls">
+														<input type="text" placeholder="Enter last name" id="username" class="input-xlarge" name="lname" required>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">Publication country</label>
+													<div class="controls">
+														<input type="text" placeholder="Enter country" id="username" class="input-xlarge" name="country" required>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">Original Price</label>
+													<div class="controls">
+														<input type="number" placeholder="Enter book price" id="username" class="input-xlarge" name="price1" required>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">New Price</label>
+													<div class="controls">
+														<input type="number" placeholder="Enter book price" id="username" class="input-xlarge" name="price2" required>
+													</div>
+												</div>
+												<div class="control-group">
+													<input tabindex="3" class="btn btn-inverse large" type="submit" value="Update Book Price">
+												</div>
+											</fieldset>
+										</form>
+									</div>			
+									</div>
+								</div>
+							</div>						
+						</div>
+
+
+						<!-- Delete Book -->
+						<div class="row">
+							<div class="span12">
+								<h4 class="title">
+									<span class="pull-left"><span class="text"><span class="line"><strong>DELETE </strong>Books</span></span></span>
+									<!-- <span class="pull-right">
+										<a class="left button" href="#myCarousel-2" data-slide="prev"></a><a class="right button" href="#myCarousel-2" data-slide="next"></a>
+									</span> -->
+								</h4>
+								<div id="myCarousel-2" class="myCarousel carousel slide">
+									<div class="carousel-inner">
+										<div class = "content">
+										<form action="{{url_for('deleteBookRoute')}}" class="form-stacked" method="POST">
+											<input type="hidden" name="next" value="/">
+											<fieldset>
+												<div class="control-group">
+													<label class="control-label">Book ISBN</label>
+													<div class="controls">
+														<input type="number" placeholder="Enter book ISBN" id="username" class="input-xlarge" name="bookID" required>
+													</div>
+												</div>												
+												<div class="control-group">
+													<label class="control-label">Author First Name</label>
+													<div class="controls">
+														<input type="text" placeholder="Enter first name" id="username" class="input-xlarge" name="fname" required>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">Author Last Name</label>
+													<div class="controls">
+														<input type="text" placeholder="Enter last name" id="username" class="input-xlarge" name="lname" required>
+													</div>
+												</div>
+												<div class="control-group">
+													<label class="control-label">Publication country</label>
+													<div class="controls">
+														<input type="text" placeholder="Enter the country" id="username" class="input-xlarge" name="country" required>
+													</div>
+												</div>
+				
+												<div class="control-group">
+													<input tabindex="3" class="btn btn-inverse large" type="submit" value="Delete Book">								
+												</div>
+											</fieldset>
+										</form>	
+									</div>		
+									</div>							
+								</div>
+							</div>						
+						</div>
+					</div>				
+				</div>
+			</section>
+
+			<section id="copyright">
+				
+			</section>
+		</div>
+		{% if response == 1 %}
+		<script>								
+			alert("Success");
+		</script>
+		{% endif %}
+
+		{% if response == 0 %}								
+		<script>								
+			alert("Failed");
+		</script>
+		{% endif %}
+
+		<script src="static/js/common.js"></script>
+		<script src="static/js/jquery.flexslider-min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(document).ready(function() {
+					$('.flexslider').flexslider({
+						animation: "fade",
+						slideshowSpeed: 4000,
+						animationSpeed: 600,
+						controlNav: false,
+						directionNav: true,
+						controlsContainer: ".flex-container" // the container that holds the flexslider
+					});
+				});
+			});
+		</script>
+    </body>
+</html>

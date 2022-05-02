@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Daily Dose of Reading</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- bootstrap -->
+		<link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">      
+		<link href="static/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">		
+		<link href="static/css/bootstrappage.css" rel="stylesheet"/>
+		
+		<!-- global styles -->
+		<link href="static/css/flexslider.css" rel="stylesheet"/>
+		<link href="static/css/main.css" rel="stylesheet"/>
+
+		<!-- scripts -->
+		<script src="static/js/jquery-1.7.2.min.js"></script>
+		<script src="static/bootstrap/js/bootstrap.min.js"></script>				
+		<script src="static/js/superfish.js"></script>	
+		<script src="static/js/jquery.scrolltotop.js"></script>
+		<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+    <body>		
+		<div id="top-bar" class="container">
+			<div class="row">
+				<div class="span4">
+					<a href="index.html" class="logo pull-left"><img src="static/images/websitelogo.png" class="site_logo" alt=""></a>
+				</div>
+				<div class="span8">
+					<div class="account pull-right">
+						<ul class="user-menu">	
+							<li><a href="/">Go Back</a></li>			
+							<li><a href="/register">Register</a></li>		
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="wrapper" class="container">
+			<section class="main-content">				
+				<div class="row">
+					<!-- <div class="span5">			Originally		 --> 
+						<div class="span12">	
+						<h4 class="title"><span class="text"><strong>Login</strong> Form</span></h4>
+						<div class = "content">
+						<form action="{{url_for('loginRoute')}}" class="form-stacked" method="POST">
+							<input type="hidden" name="next" value="/">
+							<fieldset>
+								<div class="control-group">
+									<label class="control-label">Username</label>
+									<div class="controls">
+										<input type="text" placeholder="Enter your username" id="username" class="input-xlarge" name="username" required>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">Password</label>
+									<div class="controls">
+										<input type="password" placeholder="Enter your password" id="password" class="input-xlarge" name="password" required>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">Account Type</label>
+									<div class="controls">
+										<select id="account" name="account">
+											<option value="customer" selected>Customer</option>
+											<option value="admin">Admin</option>
+										  </select>
+									</div>
+								</div>
+
+								<div class="control-group">
+									<input tabindex="3" class="btn btn-inverse large" type="submit" value="Sign into your account">
+									<hr>
+                                    <p class="reset"><a tabindex="4" href="#" title="Recover your password">Forgot password?</a></p>
+								</div>
+							</fieldset>
+						</form>	
+					</div>			
+					</div>
+				</div>
+			</section>			
+		</div>
+		{% if response == 1 %}
+		<script>								
+			alert("Registration successful");
+		</script>
+		{% endif %}
+
+		{% if response == 0 %}								
+		<script>								
+			alert("Login Failed! Please enter correct credentials");
+		</script>
+		{% endif %}
+    </body>
+</html>

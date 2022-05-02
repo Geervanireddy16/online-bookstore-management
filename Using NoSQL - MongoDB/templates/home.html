@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Daily Dose of Reading</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'/><![endif]-->
+		<!-- bootstrap -->
+		<link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">      
+		<link href="static/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+		
+		<link href="static/css/bootstrappage.css" rel="stylesheet"/>
+		
+		<!-- global styles -->
+		<link href="static/css/flexslider.css" rel="stylesheet"/>
+		<link href="static/css/main.css" rel="stylesheet"/>
+
+		<!-- scripts -->
+		<script src="static/js/jquery-1.7.2.min.js"></script>
+		<script src="static/bootstrap/js/bootstrap.min.js"></script>				
+		<script src="static/js/superfish.js"></script>	
+		<script src="static/js/jquery.scrolltotop.js"></script>
+		<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+		<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+		<!--[if lt IE 9]>			
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+    <body>		
+		<div id="top-bar" class="container">
+			<div class="row">
+				<div class="span4">
+					<a href="/" class="logo pull-left"><img src="static/images/websitelogo.png" class="site_logo" alt=""></a>
+
+				</div>
+				<div class="span8">
+					<div class="account pull-right">
+						<ul class="user-menu">				
+							<li><a href="./register">Register</a></li>
+							<li><a href="./login">Login</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="wrapper" class="container">
+
+			</br>
+			<section  class="homepage-slider" id="home-slider">
+				<div class="flexslider">
+					<ul class="slides">
+						<li>
+							<img src="static/images/carousel/carousel1.jpg" alt="" />
+						</li>
+						<li>
+							<img src="static/images/carousel/carousel2.jpg" alt="" />
+						</li>
+						<li>
+							<img src="static/images/carousel/Carousel3.jpg" alt="" />
+						</li>
+						<li>
+							<img src="static/images/carousel/Carousel4.jpg" alt="" />
+						</li>
+					</ul>
+				</div>			
+			</section>
+			<section class="header_text">
+				There is more treasure in books than in all the pirate’s loot on Treasure Island.
+				<br/>                  
+				- Walt Disney
+			</section>
+
+		<!-- GENRE-->
+			<section class="main-content">
+				<div class="row">
+					<div class="span12">													
+						<div class="row">
+							<div class="span12">
+								<h4 class="title">
+									<span class="pull-left"><span class="text"><span class="line"><strong>GENRE</strong></span></span></span>
+									<span class="pull-right">
+										<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
+									</span>
+								</h4>
+								<div id="myCarousel" class="myCarousel carousel slide">
+									<div class="carousel-inner">
+										<div class="active item">
+											<ul class="thumbnails">	
+												{% for genre in genreData %}											
+												<li class="span2">
+													<div class="product-box">
+														<span class="sale_tag"></span>
+														<p><a href="./register"><img src="static/images/books/genre.png" alt="" /></a></p>
+														<p class="price"> {{ genre }} </p>
+													</div>
+												</li>
+												{% endfor %}
+											</ul>
+										</div>
+
+									</div>							
+								</div>
+							</div>						
+						</div>
+						<br/>
+
+						<!-- Display books Genre wise -->
+						{% for genre in genreData %}
+						<div class="row">
+							<div class="span12">
+								<h4 class="title">
+									<span class="pull-left"><span class="text"><span class="line"><strong>{{genre}}</strong> Books</span></span></span>
+									<span class="pull-right">
+										<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
+									</span>
+								</h4>
+								<div id="myCarousel" class="myCarousel carousel slide">
+									<div class="carousel-inner">
+										<div class="active item">
+											<ul class="thumbnails">	
+												{% for book in booksData %}
+														{% if genre == book['genre'] %}
+															<li class="span2">
+																<div class="product-box">
+																	<span class="sale_tag"></span>
+																	<p><a href="./register"><img src="static/images/books/book.png" alt="" /></a></p>
+																	<a href="/register" class="title">({{book['bookID']}}) {{book['title']}}</a><br/>
+																	<a href="/register" class="title">- {{book['authorname']}}</a><br/>
+																	<a href="/register" class="category">{{book['genre']}}</a>
+																	<p class="price">Rs {{book['price']}} /-</p>
+																</div>
+															</li>	
+														{% endif %}									
+												{% endfor %}
+											</ul>
+										</div>
+									</div>							
+								</div>
+							</div>						
+						</div>
+						{% endfor %}
+
+
+						<!-- Developers Section -->
+						<h4 class="title"><span class="text"><strong>Developers</strong></span></h4>	
+						<div class="row feature_box">						
+							<div class="span6">
+								<div class="service">
+									
+									<div class="responsive">	
+										<img src="static/images/feature_img_3.png" alt="" />
+										<h4><strong>A N Geervani Reddy</strong></h4>
+										<h9>Third Year IT Student</h9>
+										<p>Grno: 21911194 & Rollno: 331001</p>
+										<a href="mailto:geervani.21911194@viit.ac.in">
+											<i class="far fa-envelope" style="font-size:24px;color:black"></i></a>
+										<a href="https://www.linkedin.com/in/geervani-reddy">
+											<i class="fab fa-linkedin" style="font-size:24px;color:blue"></i></a>
+										<a href="https://github.com/Geervanireddy16">
+											<i class="fab fa-github" style="font-size:24px;color:black"></i></a>							
+									</div>
+								</div>
+							</div>
+							<div class="span6">	
+								<div class="service">
+									<div class="customize">			
+										<img src="static/images/feature_img_3.png" alt="" />
+										<h4><strong>Shyam Aher</strong></h4>
+										<h9>Third Year Information Technology</h9>
+										<p>Grno: 21910485 & Rollno: 331003</p>
+										<a href="mailto:shyam.21910485@viit.ac.in">
+											<i class="far fa-envelope" style="font-size:24px;color:black"></i></a>
+										<a href="https://www.linkedin.com/in/shyam-aher-034434191">
+											<i class="fab fa-linkedin" style="font-size:24px;color:blue"></i></a>
+										<a href="https://github.com/Shyam17360">
+											<i class="fab fa-github" style="font-size:24px;color:black"></i></a>								
+									</div>
+								</div>
+							</div>
+							<!-- <div class="span3">
+								<div class="service">
+									<div class="support">	
+										<img src="static/images/feature_img_3.png" alt="" />
+										<h4><strong>Sakshi Gaikwad</strong></h4>
+										<h9>Third Year Information Technology</h9>
+										<p>Grno: 21910485 & Rollno: 331003</p>
+										<a href="mailto:sakshi.21910962@viit.ac.in">
+											<i class="far fa-envelope" style="font-size:24px;color:black"></i></a>
+										<a href="https://www.linkedin.com/in/sakshi-gaikwad-bb5b0a197">
+											<i class="fab fa-linkedin" style="font-size:24px;color:blue"></i></a>
+										<a href="https://github.com/Sakshi238">
+											<i class="fab fa-github" style="font-size:24px;color:black"></i></a>			
+									</div>
+								</div>
+							</div>	 -->
+							<!-- <div class="span3">
+								<div class="service">
+									<div class="support">	
+										<img src="static/images/feature_img_3.png" alt="" />
+										<h4><strong>Kartik Hiremath</strong></h4>
+										<h9>Third Year Information Technology</h9>
+										<p>Grno: 21910485 & Rollno: 331003</p>
+										<a href="mailto:kartik.21910418@viit.ac.in">
+											<i class="far fa-envelope" style="font-size:24px;color:black"></i></a>
+										<a href="https://www.linkedin.com/in/kartik-hiremath-54b410121">
+											<i class="fab fa-linkedin" style="font-size:24px;color:blue"></i></a>
+										<a href="https://github.com/kartikraj">
+											<i class="fab fa-github" style="font-size:24px;color:black"></i></a>	
+									</div>
+								</div>
+							</div>	 -->
+						</div>	
+						
+					</div>				
+				</div>
+			</section>
+			
+			<section id="copyright">
+			</section>
+
+		</div>
+		<script src="static/js/common.js"></script>
+		<script src="static/js/jquery.flexslider-min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(document).ready(function() {
+					$('.flexslider').flexslider({
+						animation: "fade",
+						slideshowSpeed: 4000,
+						animationSpeed: 600,
+						controlNav: false,
+						directionNav: true,
+						controlsContainer: ".flex-container" // the container that holds the flexslider
+					});
+				});
+			});
+		</script>
+		<style>
+			.contact{
+				color:#eb4800
+			}
+		</style>
+    </body>
+</html>
